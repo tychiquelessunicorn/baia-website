@@ -40,6 +40,7 @@ export const brand = {
   hoursUtility: "Lunch 12:00–15:30 · Dinner 18:00–22:00",
   lunch: "Mon – Sun: 12:00 – 15:30",
   dinner: "Mon – Sun: 18:00 – 22:00",
+  booking: "https://www.dineplan.com/restaurants/baia-seafood-restaurant",
   instagram: "https://www.instagram.com/baiaseafoodrestaurant/",
   maps: "https://www.google.com/maps/search/?api=1&query=Baia+Seafood+Restaurant+Entrance+5+Shop+259+V%26A+Waterfront+Cape+Town",
   mapEmbed:

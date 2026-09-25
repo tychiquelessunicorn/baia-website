@@ -26,10 +26,6 @@ export function HomeView() {
   const [menu, setMenu] = useState<(typeof menuTabs)[number]["id"]>("cocktails");
   const [cat, setCat] = useState(0);
   const [eventIndex, setEventIndex] = useState(0);
-  const [booked, setBooked] = useState(false);
-  const [people, setPeople] = useState("01 Person");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -88,23 +84,7 @@ export function HomeView() {
             <h2>Book a table</h2>
             <p>Lunch and dinner, every day, above Table Bay. Parties of eight or more require a R150 per person deposit.</p>
           </div>
-          <form
-            className="book-form"
-            onSubmit={(event) => {
-              event.preventDefault();
-              setBooked(true);
-            }}
-          >
-            <select value={people} onChange={(event) => setPeople(event.target.value)} aria-label="People">
-              {["01 Person", "02 Person", "03 Person", "04 Person", "05 Person", "06 Person", "08+ Person"].map((item) => (
-                <option key={item}>{item}</option>
-              ))}
-            </select>
-            <input type="date" value={date} onChange={(event) => setDate(event.target.value)} aria-label="Date" required />
-            <input type="time" value={time} onChange={(event) => setTime(event.target.value)} aria-label="Time" required />
-            <button type="submit" className="btn-fill">Book A Seat</button>
-            {booked && <p className="form-ok">The request is noted. The house confirms by phone or email.</p>}
-          </form>
+          <a className="btn-fill" href={brand.booking}>Book A Seat</a>
         </div>
       </section>
 
