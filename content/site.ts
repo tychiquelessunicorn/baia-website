@@ -263,17 +263,6 @@ export const quotes = [
   },
 ];
 
-export const marquee = [
-  { name: "Cataplana", image: photos.prawns },
-  { name: "Seafood Platter", image: photos.platter },
-  { name: "Langoustines", image: photos.rolls },
-  { name: "Linefish", image: photos.sashimi },
-  { name: "Harbour Negroni", image: photos.amber },
-  { name: "The Cellar", image: photos.glass },
-  { name: "Sushi", image: photos.rolls },
-  { name: "Four Terraces", image: photos.terrace },
-];
-
 export const events = [
   { title: "Private Dining", date: "By arrangement", time: "Lunch or dinner", image: photos.dining },
   { title: "Corporate Table", date: "Weekdays", time: "Set menus on request", image: photos.table },

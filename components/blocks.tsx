@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { marquee } from "@/content/site";
 import { PlayMark } from "./icons";
 
 export function Reveal({
@@ -47,30 +46,27 @@ export function PageBanner({ title, crumb }: { title: string; crumb: string }) {
   );
 }
 
+const MARQUEE_LINE =
+  "BAIA: Where every visit is an invitation to relax, indulge and savour the best of Cape Town's coastal dining.";
+
 export function DishMarquee() {
-  const loop = [...marquee, ...marquee];
+  const copies = [0, 1, 2, 3];
+  const row = (reverse: boolean) => (
+    <div className={`marquee-row${reverse ? " marquee-row-rev" : ""}`} data-parallax={reverse ? "-44" : "56"}>
+      <div className="marquee-track" aria-hidden="true">
+        {copies.map((i) => (
+          <span className="marquee-item" key={i}>
+            <em>{MARQUEE_LINE}</em>
+            <i className="diamond" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
   return (
-    <section className="marquee" aria-label="Dishes">
-      <div className="marquee-row" data-parallax="56">
-        <div className="marquee-track">
-          {loop.map((item, i) => (
-            <span className="marquee-item" key={`a-${item.name}-${i}`}>
-              <em>{item.name}</em>
-              <img src={item.image} alt="" />
-            </span>
-          ))}
-        </div>
-      </div>
-      <div className="marquee-row marquee-row-rev" data-parallax="-44">
-        <div className="marquee-track">
-          {loop.map((item, i) => (
-            <span className="marquee-item" key={`b-${item.name}-${i}`}>
-              <em>{item.name}</em>
-              <img src={item.image} alt="" />
-            </span>
-          ))}
-        </div>
-      </div>
+    <section className="marquee" aria-label={MARQUEE_LINE}>
+      {row(false)}
+      {row(true)}
     </section>
   );
 }

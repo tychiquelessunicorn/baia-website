@@ -229,12 +229,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
         </div>
         <div className="foot-bottom" data-parallax="40">
           <p>Copyright © {new Date().getFullYear()} {brand.legal}</p>
-          <nav>
-            <Link href="/#visit">Faq</Link>
-            <Link href="/#visit">Careers</Link>
-            <Link href="/#visit">T & C</Link>
-            <Link href="/#visit">Contact</Link>
-          </nav>
         </div>
       </footer>
 

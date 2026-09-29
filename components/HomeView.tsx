@@ -12,7 +12,7 @@ import {
   services,
   storyTabs,
 } from "@/content/site";
-import { DishMarquee, Reveal, SponsorStrip, VideoBlock } from "./blocks";
+import { DishMarquee, Reveal, VideoBlock } from "./blocks";
 import { Chefs } from "./Chefs";
 import { MenuExplore } from "./MenuExplore";
 import { Diamond, Floral } from "./icons";
@@ -456,13 +456,6 @@ export function HomeView() {
         </div>
       </section>
 
-      <section className="motto" aria-hidden="true">
-        <div className="motto-drift" data-parallax="-46">
-          <p>Truly fine seafood for the long light of the harbour · Fully licensed · Halaal friendly · </p>
-          <p>Truly fine seafood for the long light of the harbour · Fully licensed · Halaal friendly · </p>
-        </div>
-      </section>
-
       <section className="location" id="visit">
         <div className="loc-top">
           <div className="map-wrap" data-parallax="120">
@@ -485,8 +478,6 @@ export function HomeView() {
           <a className="btn-line" href={brand.maps} target="_blank" rel="noreferrer">Get Direction ◇</a>
         </div>
       </section>
-
-      <SponsorStrip />
 
       <section className="instagram" id="instagram">
         <a className="ig-badge" href={brand.instagram} target="_blank" rel="noreferrer">Instagram</a>
