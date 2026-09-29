@@ -136,6 +136,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <Diamond />
             <Link href="/#explore">Menus</Link>
             <Diamond />
+            <Link href="/#about">About Us</Link>
+            <Diamond />
             <Link href="/#chefs">Chefs</Link>
             <Diamond />
             <Link href="/#footer">Contact</Link>
@@ -153,6 +155,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <button type="button" className="sheet-close" onClick={() => setMobile(false)}>Close</button>
           <Link href="/">Home</Link>
           <Link href="/#explore">Menus</Link>
+          <Link href="/#about">About Us</Link>
           <Link href="/#chefs">Chefs</Link>
           <Link href="/#footer">Contact</Link>
           <a href={brand.booking}>Book Now</a>
@@ -193,7 +196,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <main>{children}</main>
 
       <footer className="site-footer" id="footer">
-        <div className="foot-grid" data-parallax="90">
+        <div className="foot-grid">
           <section>
             <Diamond />
             <h2>Get In Touch</h2>
@@ -218,10 +221,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <p className="copper">{brand.dinner}</p>
           </section>
         </div>
-        <div className="foot-logo" data-parallax="-56">
+        <div className="foot-logo">
           <Logo />
         </div>
-        <div className="foot-bottom" data-parallax="40">
+        <div className="foot-bottom">
           <p>Copyright © {new Date().getFullYear()} {brand.legal}</p>
         </div>
       </footer>

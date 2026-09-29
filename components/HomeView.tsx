@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   brand,
-  events,
   heroSlides,
   instagram,
   photos,
@@ -12,6 +11,7 @@ import {
   services,
   storyTabs,
 } from "@/content/site";
+import { AboutStory } from "./AboutStory";
 import { DishMarquee, Reveal, VideoBlock } from "./blocks";
 import { Chefs } from "./Chefs";
 import { MenuExplore } from "./MenuExplore";
@@ -144,7 +144,6 @@ export function HomeView() {
   const pendingRef = useRef(0);
   const storyReady = useRef(false);
   const [quote, setQuote] = useState(0);
-  const [eventIndex, setEventIndex] = useState(0);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -211,67 +210,7 @@ export function HomeView() {
     return () => window.clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setEventIndex((n) => (n + 1) % events.length);
-    }, 4000);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-
-    const apply = () => {
-      frame = 0;
-      if (reduce.matches) {
-        document.querySelectorAll<HTMLElement>(".hero-depth, .hero-copy, [data-parallax]").forEach((el) => {
-          el.style.transform = "";
-          delete el.dataset.shift;
-        });
-        return;
-      }
-      const view = window.innerHeight;
-      const narrow = window.innerWidth < 981;
-      const calm = narrow ? 0.55 : 1;
-      const scroll = window.scrollY;
-
-      const depth = document.querySelector<HTMLElement>(".hero-depth");
-      if (depth) depth.style.transform = `translate3d(0, ${Math.min(scroll * 0.46, 210) * calm}px, 0)`;
-
-      const copy = document.querySelector<HTMLElement>(".hero-copy");
-      if (copy) copy.style.transform = `translate3d(0, ${-Math.min(scroll * 0.16, 90) * calm}px, 0)`;
-
-      document.querySelectorAll<HTMLElement>("[data-parallax]").forEach((el) => {
-        const speed = Number(el.dataset.parallax) * calm;
-        const shift = Number(el.dataset.shift || 0);
-        const center = el.getBoundingClientRect().top - shift + el.offsetHeight / 2;
-        const progress = (center - view / 2) / view;
-        const next = progress * speed;
-        el.dataset.shift = String(next);
-        el.style.transform = `translate3d(0, ${next}px, 0)`;
-      });
-    };
-
-    const request = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(apply);
-    };
-
-    apply();
-    window.addEventListener("scroll", request, { passive: true });
-    window.addEventListener("resize", request);
-    reduce.addEventListener("change", request);
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", request);
-      window.removeEventListener("resize", request);
-      reduce.removeEventListener("change", request);
-    };
-  }, []);
-
   const current = heroSlides[slide];
-  const visibleEvents = [0, 1, 2].map((offset) => events[(eventIndex + offset) % events.length]);
 
   return (
     <>
@@ -351,7 +290,7 @@ export function HomeView() {
       </section>
 
       <section className="booking" id="book">
-        <div className="booking-row" data-parallax="70">
+        <div className="booking-row">
           <div className="booking-copy">
             <p className="kicker">Reservations</p>
             <h2>Book a table</h2>
@@ -367,14 +306,14 @@ export function HomeView() {
       </section>
 
       <section className="story" id="story">
-        <div className="story-mark" data-parallax="42">
+        <div className="story-mark">
           <Floral />
         </div>
         <Reveal className="story-grid">
-          <div className="story-photo" data-parallax="-130">
+          <div className="story-photo">
             <img src={photos.interior} alt="The dining room" />
           </div>
-          <div className="story-copy" data-parallax="-72">
+          <div className="story-copy">
             <h2>For the appetite, and the occasion</h2>
             <div className="tabs">
               {storyTabs.map((item, index) => (
@@ -397,7 +336,7 @@ export function HomeView() {
             </div>
             <a className="btn-line" href={brand.booking}>◇ Find A Table ◇</a>
           </div>
-          <div className="story-photo" data-parallax="160">
+          <div className="story-photo">
             <img src={photos.prawns} alt="Seared scallops" />
           </div>
         </Reveal>
@@ -405,71 +344,46 @@ export function HomeView() {
 
       <MenuExplore />
 
+      <AboutStory />
+
       <Chefs />
 
       <section className="quotes">
         <div className="frame frame-l" />
         <div className="frame frame-r" />
-        <div data-parallax="90">
-          <div className="story-mark">
-            <Floral />
-          </div>
-          <h2 className="quotes-title">Users feedback</h2>
-          <a
-            className="quotes-link"
-            href={quotes[quote].href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Read ${quotes[quote].name}'s review on ${quotes[quote].source}`}
-          >
-            <p className="stars" aria-hidden="true">{"★".repeat(quotes[quote].rating)}</p>
-            <blockquote>“ {quotes[quote].text} ”</blockquote>
-            <figure>
-              <img src={quotes[quote].image} alt={quotes[quote].name} />
-              <figcaption>
-                <strong>{quotes[quote].name}</strong>
-                <span>{quotes[quote].source} · {quotes[quote].when}</span>
-              </figcaption>
-            </figure>
-          </a>
-          <div className="pager">
-            {quotes.map((item, index) => (
-              <button key={`${item.name}-${item.when}`} type="button" className={index === quote ? "is-on" : ""} onClick={() => setQuote(index)}>
-                {index + 1}
-              </button>
-            ))}
-          </div>
+        <div className="story-mark">
+          <Floral />
+        </div>
+        <h2 className="quotes-title">Users feedback</h2>
+        <a
+          className="quotes-link"
+          href={quotes[quote].href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Read ${quotes[quote].name}'s review on ${quotes[quote].source}`}
+        >
+          <p className="stars" aria-hidden="true">{"★".repeat(quotes[quote].rating)}</p>
+          <blockquote>“ {quotes[quote].text} ”</blockquote>
+          <figure>
+            <img src={quotes[quote].image} alt={quotes[quote].name} />
+            <figcaption>
+              <strong>{quotes[quote].name}</strong>
+              <span>{quotes[quote].source} · {quotes[quote].when}</span>
+            </figcaption>
+          </figure>
+        </a>
+        <div className="pager">
+          {quotes.map((item, index) => (
+            <button key={`${item.name}-${item.when}`} type="button" className={index === quote ? "is-on" : ""} onClick={() => setQuote(index)}>
+              {index + 1}
+            </button>
+          ))}
         </div>
       </section>
 
       <DishMarquee />
 
       <VideoBlock word="The new home" />
-
-      <section className="events">
-        <div data-parallax="-70">
-          <Reveal>
-            <Floral />
-            <h2>Explore our private evenings<br />along the harbour</h2>
-          </Reveal>
-        </div>
-        <div data-parallax="110">
-        <div className="event-row">
-          {visibleEvents.map((item, index) => (
-            <article key={`${item.title}-${index}`} className={index === 1 ? "is-offset" : ""}>
-              <img src={item.image} alt="" />
-              <h3>{item.title}</h3>
-              <p>{item.date}</p>
-              <p>Time: {item.time}</p>
-            </article>
-          ))}
-        </div>
-        </div>
-        <div className="event-nav" data-parallax="-48">
-          <button type="button" onClick={() => setEventIndex((n) => (n + events.length - 1) % events.length)} aria-label="Previous events">‹</button>
-          <button type="button" onClick={() => setEventIndex((n) => (n + 1) % events.length)} aria-label="Next events">›</button>
-        </div>
-      </section>
 
       <section className="services" aria-label="The house">
         <div className="services-row">
@@ -484,7 +398,7 @@ export function HomeView() {
       </section>
 
       <section className="location" id="visit">
-        <div className="loc-top" data-parallax="72">
+        <div className="loc-top">
           <div className="map-wrap">
             <iframe title="Map of Baía at the V&A Waterfront" src={brand.mapEmbed} loading="lazy" />
             <h2 className="map-title">Find us at Entrance 5, 1st Floor.</h2>
@@ -502,7 +416,7 @@ export function HomeView() {
       <section className="instagram" id="instagram">
         <a className="ig-badge" href={brand.instagram} target="_blank" rel="noreferrer">Instagram</a>
         <a className="ig-badge is-facebook" href={brand.facebook} target="_blank" rel="noreferrer">Facebook</a>
-        <div className="ig-grid" data-parallax="100">
+        <div className="ig-grid">
           {instagram.filter((src) => src !== photos.table && src !== photos.wine).map((src, index) => (
             <a key={`${src}-${index}`} href={brand.instagram} target="_blank" rel="noreferrer">
               <img src={src} alt="" />

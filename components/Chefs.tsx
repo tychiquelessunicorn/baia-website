@@ -64,7 +64,7 @@ export function Chefs() {
 
   return (
     <section className="chefs" id="chefs" aria-label="The chefs" ref={sectionRef}>
-      <div className="chefs-head" data-parallax="-64">
+      <div className="chefs-head">
         <div>
           <p className="kicker">The kitchen</p>
           <h2>
@@ -75,7 +75,7 @@ export function Chefs() {
         </div>
         <p>Together, Patrick and Brian keep one standard: excellence, creativity, and a plate finished to the last detail.</p>
       </div>
-      <div className={`chef-show${seen || !motion ? " is-live" : ""}`} data-parallax="96">
+      <div className={`chef-show${seen || !motion ? " is-live" : ""}`}>
         <div className="chef-stage">
           {leaving !== null && <ChefPane chef={chefs[leaving]} mode="out" typing={false} />}
           <ChefPane key={epoch} chef={chefs[index]} mode="in" typing={seen && motion} />

@@ -52,7 +52,7 @@ const MARQUEE_LINE =
 export function DishMarquee() {
   const copies = [0, 1, 2, 3];
   const row = (reverse: boolean) => (
-    <div className={`marquee-row${reverse ? " marquee-row-rev" : ""}`} data-parallax={reverse ? "-44" : "56"}>
+    <div className={`marquee-row${reverse ? " marquee-row-rev" : ""}`}>
       <div className="marquee-track" aria-hidden="true">
         {copies.map((i) => (
           <span className="marquee-item" key={i}>
@@ -135,7 +135,7 @@ export function VideoBlock({ word = "Restaurant" }: { word?: string }) {
           aria-modal={open || undefined}
           aria-label={open ? word : undefined}
         >
-          <div className="video-drift" data-parallax="150">
+          <div className="video-drift">
             <video
               ref={film}
               src="/video/sushi-reel.mp4"
@@ -183,14 +183,12 @@ export function SponsorStrip({ line = "A cellar of rare Cape vintages" }: { line
   const loop = [...marks, ...marks];
   return (
     <section className="sponsors">
-      <div data-parallax="-56">
       <ul>
         {loop.map((mark, index) => (
           <li key={`${mark}-${index}`}>{mark}</li>
         ))}
       </ul>
-      </div>
-      <p data-parallax="40">{line}</p>
+      <p>{line}</p>
     </section>
   );
 }

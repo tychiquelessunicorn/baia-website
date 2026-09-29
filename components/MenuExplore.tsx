@@ -220,7 +220,7 @@ export function MenuExplore() {
 
   return (
     <section className="menu-explore" id="explore" aria-label="The menu">
-      <div className="menu-head" data-parallax="-64">
+      <div className="menu-head">
       <p className="kicker">The menu</p>
       <div className="menu-chapters" role="tablist" aria-label="Menu chapters">
         {menuChapters.map((item) => (
@@ -260,7 +260,6 @@ export function MenuExplore() {
       </div>
       <div
         className={`menu-reel${single ? " is-single" : ""}${canScroll ? "" : " is-still"}`}
-        data-parallax="86"
         id="explore-panel"
         role="tabpanel"
         aria-labelledby={`chapter-${chapter.id}`}
@@ -288,7 +287,6 @@ export function MenuExplore() {
         ref={openButtonRef}
         type="button"
         className="btn-line"
-        data-parallax="46"
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={() => setOpen(true)}

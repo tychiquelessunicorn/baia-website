@@ -104,6 +104,24 @@ export const storyTabs = [
   },
 ];
 
+export const aboutNotes = [
+  {
+    index: "I",
+    title: "The word",
+    text: "There is a Portuguese word for the bay. Baía, said Ba-hia. In 2001 Louis and Daryl took it, not to describe a view, but to name a standard the house would have to keep. Every year since has been an attempt to deserve the word.",
+  },
+  {
+    index: "II",
+    title: "The reputation",
+    text: "The name travelled first. It spread as a landmark for fine cuisine and wine: the finest seafood of southern Africa, poultry, beef, and venison, and a cellar of rare Cape vintages. Patrick has cooked it from the beginning, from the finest ingredients, drawing on continental cuisine and Portuguese colonial tradition. Guests left speaking of an evening that would not be hurried. The room was only where it happened.",
+  },
+  {
+    index: "III",
+    title: "The rebuilding",
+    text: "The walls came last. A new house was raised so a promise already decades old would have rooms equal to it, the harbour and the water still in view. Brian came to give the cooking a new touch. What you see is new. What people came for was never the building.",
+  },
+];
+
 export const chefs = [
   {
     role: "Original chef",
@@ -261,13 +279,6 @@ export const quotes = [
     href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1027453733-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
     image: "/reviews/david-s.jpg",
   },
-];
-
-export const events = [
-  { title: "Private Dining", date: "By arrangement", time: "Lunch or dinner", image: photos.dining },
-  { title: "Corporate Table", date: "Weekdays", time: "Set menus on request", image: photos.table },
-  { title: "Harbour Evening", date: "Evenings", time: "18:00 to 22:00", image: photos.party },
-  { title: "Cellar Gathering", date: "On request", time: "Wine with the menu", image: photos.wine },
 ];
 
 export const instagram = [
