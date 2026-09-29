@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { brand, instagram } from "@/content/site";
-import { Diamond, Logo } from "./icons";
+import { Diamond, FacebookIcon, InstagramIcon, Logo, MailIcon, PhoneIcon } from "./icons";
 
 const pages = [
   { href: "/#story", label: "About Us" },
@@ -15,7 +15,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [stuck, setStuck] = useState(false);
   const [open, setOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showTop, setShowTop] = useState(false);
@@ -34,7 +33,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
     setLoading(true);
     setOpen(false);
     setMobile(false);
-    const timer = window.setTimeout(() => setLoading(false), 900);
+    const timer = window.setTimeout(() => setLoading(false), 1500);
     return () => window.clearTimeout(timer);
   }, [pathname]);
 
@@ -86,38 +85,28 @@ export function Shell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div className={`loader ${loading ? "is-on" : ""}`} aria-hidden={!loading}>
-        <div className="loader-mark">
-          <svg viewBox="0 0 180 180" className="loader-ring">
-            <circle cx="90" cy="90" r="78" />
-            <circle cx="90" cy="90" r="78" className="loader-arc" />
-          </svg>
-          <Logo />
-        </div>
-        <p>Loading...</p>
+        <Logo />
       </div>
 
       <header className={`site-header ${stuck ? "is-stuck" : ""}`}>
         <div className="utility">
           <div className="utility-side utility-left">
-            <div className="lang">
-              <button type="button" onClick={() => setLangOpen((v) => !v)} aria-expanded={langOpen}>
-                English <span>▾</span>
-              </button>
-              {langOpen && (
-                <ul>
-                  <li><button type="button" onClick={() => setLangOpen(false)}>English</button></li>
-                  <li><button type="button" onClick={() => setLangOpen(false)}>Português</button></li>
-                </ul>
-              )}
-            </div>
-            <Diamond />
-            <span>12:00–15:30 · 18:00–22:00</span>
-            <Diamond />
+            <dl className="utility-hours">
+              {brand.headerHours.map((row) => (
+                <div key={row.label}>
+                  <dt>{row.label}</dt>
+                  <dd>{row.time}</dd>
+                </div>
+              ))}
+            </dl>
+            <span className="utility-split" aria-hidden="true" />
             <span className="follow">
-              Follow Us:
-              <a href={brand.instagram} aria-label="Instagram" target="_blank" rel="noreferrer">f</a>
-              <a href={brand.instagram} aria-label="X" target="_blank" rel="noreferrer">𝕏</a>
-              <a href={brand.instagram} aria-label="Behance" target="_blank" rel="noreferrer">Be</a>
+              <a href={brand.facebook} aria-label="Facebook" target="_blank" rel="noreferrer">
+                <FacebookIcon />
+              </a>
+              <a href={brand.instagram} aria-label="Instagram" target="_blank" rel="noreferrer">
+                <InstagramIcon />
+              </a>
             </span>
           </div>
           <div className="utility-center">
@@ -128,9 +117,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <span className="rule" />
           </div>
           <div className="utility-side utility-right">
-            <a href={brand.phoneHref}>P. {brand.phone}</a>
-            <Diamond />
-            <a href={brand.maps} target="_blank" rel="noreferrer">L. {brand.addressShort}</a>
+            <a className="utility-phone" href={brand.phoneHref}>{brand.phone}</a>
+            <span className="utility-split" aria-hidden="true" />
+            <a className="utility-address" href={brand.maps} target="_blank" rel="noreferrer">
+              {brand.headerAddress.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </a>
           </div>
         </div>
 
@@ -182,10 +175,18 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <div className={`offcanvas ${open ? "is-open" : ""}`}>
         <button type="button" className="sheet-close" onClick={() => setOpen(false)}>Close</button>
         <Logo />
-        <p>Baía, pronounced Ba-hia, means the bay. Upstairs at Entrance 5 since 2001.</p>
-        <a href={brand.phoneHref}>{brand.phone}</a>
-        <a href={brand.emailHref}>{brand.email}</a>
-        <p>{brand.address}</p>
+        <p>BAIA: Where every visit is an invitation to relax, indulge and savour the best of Cape Town&apos;s coastal dining.</p>
+        <a className="off-line" href={brand.phoneHref}>
+          <PhoneIcon />
+          {brand.phone}
+        </a>
+        <a className="off-line" href={brand.emailHref}>
+          <MailIcon />
+          {brand.email}
+        </a>
+        <a className="off-address" href={brand.maps} target="_blank" rel="noreferrer">
+          Shop 259, Entrance 5, V&A Waterfront, Cape Town 8001
+        </a>
         <div className="off-grid">
           {instagram.slice(0, 6).map((src) => (
             <img key={src} src={src} alt="" />
@@ -199,7 +200,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <main>{children}</main>
 
       <footer className="site-footer">
-        <div className="foot-grid">
+        <div className="foot-grid" data-parallax="90">
           <section>
             <Diamond />
             <h2>Get In Touch</h2>
@@ -214,7 +215,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <section>
             <Diamond />
             <h2>The Rooms</h2>
-            <p>Cocktail bar and four terraces, upstairs at Victoria Wharf.</p>
+            <p>A sophisticated dining room, and a terrace facing Table Mountain.</p>
           </section>
           <section>
             <Diamond />
@@ -223,10 +224,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <p className="copper">{brand.dinner}</p>
           </section>
         </div>
-        <div className="foot-logo">
+        <div className="foot-logo" data-parallax="-56">
           <Logo />
         </div>
-        <div className="foot-bottom">
+        <div className="foot-bottom" data-parallax="40">
           <p>Copyright © {new Date().getFullYear()} {brand.legal}</p>
           <nav>
             <Link href="/#visit">Faq</Link>

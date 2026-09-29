@@ -1,0 +1,152 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { chefs } from "@/content/site";
+
+const HOLD = 6200;
+const PASS = 1500;
+const TYPE_START = 520;
+const TYPE_LETTER = 88;
+const TYPE_SPACE = 160;
+
+export function Chefs() {
+  const [index, setIndex] = useState(0);
+  const [leaving, setLeaving] = useState<number | null>(null);
+  const [epoch, setEpoch] = useState(0);
+  const [motion, setMotion] = useState(true);
+  const [seen, setSeen] = useState(false);
+  const indexRef = useRef(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => setMotion(!media.matches);
+    apply();
+    media.addEventListener("change", apply);
+    return () => media.removeEventListener("change", apply);
+  }, []);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setSeen(true);
+      },
+      { threshold: 0.28 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!motion || !seen) return;
+    let alive = true;
+    const queue: number[] = [];
+    const later = (ms: number, fn: () => void) => {
+      queue.push(window.setTimeout(() => { if (alive) fn(); }, ms));
+    };
+
+    later(PASS, () => setLeaving(null));
+    later(HOLD, () => {
+      const next = (indexRef.current + 1) % chefs.length;
+      setLeaving(indexRef.current);
+      indexRef.current = next;
+      setIndex(next);
+      setEpoch((n) => n + 1);
+    });
+
+    return () => {
+      alive = false;
+      queue.forEach((id) => window.clearTimeout(id));
+    };
+  }, [epoch, motion, seen]);
+
+  return (
+    <section className="chefs" aria-label="The chefs" ref={sectionRef}>
+      <div className="chefs-head" data-parallax="-64">
+        <div>
+          <p className="kicker">The kitchen</p>
+          <h2>
+            Two chefs.
+            <br />
+            One pursuit.
+          </h2>
+        </div>
+        <p>Together, Patrick and Brian keep one standard: excellence, creativity, and a plate finished to the last detail.</p>
+      </div>
+      <div className={`chef-show${seen || !motion ? " is-live" : ""}`} data-parallax="96">
+        <div className="chef-stage">
+          {leaving !== null && <ChefPane chef={chefs[leaving]} mode="out" typing={false} />}
+          <ChefPane key={epoch} chef={chefs[index]} mode="in" typing={seen && motion} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ChefPane({
+  chef,
+  mode,
+  typing,
+}: {
+  chef: (typeof chefs)[number];
+  mode: "in" | "out";
+  typing: boolean;
+}) {
+  return (
+    <div className={`chef-layer is-${mode}`} aria-hidden={mode === "out" ? true : undefined}>
+      <div className="chef-frame">
+        <img src={chef.image} alt="" />
+      </div>
+      <div className="chef-copy">
+        <p className="kicker">{chef.role}</p>
+        <TypedName name={chef.name} typing={typing} />
+        <div className="chef-line" aria-hidden="true">
+          <span />
+        </div>
+        <p>{chef.text}</p>
+      </div>
+    </div>
+  );
+}
+
+function TypedName({ name, typing }: { name: string; typing: boolean }) {
+  const [count, setCount] = useState(typing ? 0 : name.length);
+  const [caret, setCaret] = useState(typing);
+
+  useEffect(() => {
+    if (!typing) {
+      setCount(name.length);
+      setCaret(false);
+      return;
+    }
+    setCount(0);
+    setCaret(true);
+    let i = 0;
+    let timer = 0;
+    const typeNext = () => {
+      i += 1;
+      setCount(i);
+      if (i >= name.length) return;
+      timer = window.setTimeout(typeNext, name[i - 1] === " " ? TYPE_SPACE : TYPE_LETTER);
+    };
+    const start = window.setTimeout(typeNext, TYPE_START);
+    return () => {
+      window.clearTimeout(start);
+      window.clearTimeout(timer);
+    };
+  }, [name, typing]);
+
+  return (
+    <h3 aria-label={name}>
+      <span className="chef-name-ghost" aria-hidden="true">
+        {name}
+      </span>
+      <span className="chef-name-live" aria-hidden="true">
+        {name.slice(0, count)}
+        {caret && <i className="chef-caret" />}
+      </span>
+    </h3>
+  );
+}

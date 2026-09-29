@@ -40,8 +40,14 @@ export const brand = {
   hoursUtility: "Lunch 12:00–15:30 · Dinner 18:00–22:00",
   lunch: "Mon – Sun: 12:00 – 15:30",
   dinner: "Mon – Sun: 18:00 – 22:00",
-  booking: "https://www.dineplan.com/restaurants/baia-seafood-restaurant",
+  booking: "https://www.dineplan.com/restaurant/baia-seafood-restaurant",
   instagram: "https://www.instagram.com/baiaseafoodrestaurant/",
+  facebook: "https://www.facebook.com/baiaseafoodrestaurant/",
+  headerHours: [
+    { label: "Lunch", time: "12:00–15:30" },
+    { label: "Dinner", time: "18:00–22:00" },
+  ],
+  headerAddress: ["Shop 259, Entrance 5", "V&A Waterfront"],
   maps: "https://www.google.com/maps/search/?api=1&query=Baia+Seafood+Restaurant+Entrance+5+Shop+259+V%26A+Waterfront+Cape+Town",
   mapEmbed:
     "https://maps.google.com/maps?q=Entrance%205%20Victoria%20Wharf%20V%26A%20Waterfront%20Cape%20Town&z=16&output=embed",
@@ -49,60 +55,68 @@ export const brand = {
 
 export const heroSlides = [
   {
-    title: "Baía",
-    outline: "Harbour",
-    text: "Seafood, wine, and harbour light above Table Bay.",
-    image: photos.terrace,
+    title: "The",
+    outline: "Bay",
+    text: "Baía means the bay. Take a new table before Table Mountain, above Cape Town's working harbour, and watch the city become the view.",
+    image: "/atmosphere/hero-1.jpg",
   },
   {
     title: "The",
-    outline: "Platter",
-    text: "The best seafood platter in the Cape, served above the water.",
-    image: photos.dining,
-  },
-  {
-    title: "House",
-    outline: "Cataplana",
-    text: "Prawns, langoustines, mussels, calamari, and linefish.",
-    image: photos.interior,
-  },
-  {
-    title: "Cape",
     outline: "Cellar",
-    text: "Rare Cape vintages and a quiet list of imported liqueurs.",
-    image: photos.bar,
+    text: "Indulge from the first glass. Champagne, bespoke Cape wine, and cocktails composed for the hour the mountain turns to gold.",
+    image: "/atmosphere/hero-2.jpg",
   },
   {
-    title: "Four",
-    outline: "Terraces",
-    text: "Four terraces, Table Mountain, and the working harbour.",
-    image: photos.warmRoom,
+    title: "The",
+    outline: "Room",
+    text: "Two chefs. One pursuit. Patrick Cumaio, from Mozambique, brings the sea to the plate. Brian van Zijl, the artist, makes you look before you taste.",
+    image: "/atmosphere/hero-3.jpg",
+  },
+  {
+    title: "The",
+    outline: "House",
+    text: "A new house on the water, built for the long evening. Relax here. Chef Daisuke's sushi, five generations of Japanese craft, now belongs to the bay.",
+    image: "/atmosphere/hero-4.jpg",
+  },
+  {
+    title: "Every",
+    outline: "Visit",
+    text: "Come and experience Baía. Lunch or dinner, this is a journey by the sea: the mountain, the cellar, and the rare pleasure of being truly looked after.",
+    image: "/atmosphere/hero-5.jpg",
   },
 ];
 
 export const storyTabs = [
   {
-    id: "bay",
-    label: "The Bay",
-    body: "Baía, pronounced Ba-hia, means the bay. Since 2001 the room has sat upstairs at Victoria Wharf, over Table Bay, with Table Mountain and the working harbour in the same view.",
+    id: "food",
+    label: "The Food",
+    body: "Seafood leads, and the menu refuses to stop there. Linefish and shellfish sit beside aged beef, Cape venison, and poultry, then a sushi bar worked in the Japanese style. Several traditions, one kitchen, and a plate that is rarely the one you expected.",
   },
   {
-    id: "cellar",
-    label: "The Cellar",
-    body: "Rare Cape vintages, poured beside the seafood of Patrick Cumaio and the plates of Brian van Zijl. Ask the floor to set the glass before the course.",
+    id: "bar",
+    label: "The Bar",
+    body: "The list is rooted in the Cape winelands: estates poured to sit beside the food. The cocktails travel further. International classics, and house drinks written only for this room, with bubbles or a mocktail when that is the glass you want.",
   },
   {
-    id: "terraces",
-    label: "The Terraces",
-    body: "Bubbles, wine, or a mocktail on the terrace. The newest plate is Japanese-style sushi from Chef Daisuke, with Chunsheng and Wu. Lunch is midday until half past three. Dinner is six until ten.",
+    id: "atmosphere",
+    label: "The Atmosphere",
+    body: "A romantic table. A business lunch. A family gathered for the afternoon. The room is fine dining with more than one manner: quiet when the evening is yours, composed when the meeting matters, and generous when the table is full.",
   },
 ];
 
-export const categories = [
-  { kicker: "Shellfish", title: "Cataplana", image: photos.prawns },
-  { kicker: "Main Courses", title: "The Platter", image: photos.platter },
-  { kicker: "Wine, Drink", title: "The Cellar", image: photos.cocktail },
-  { kicker: "A New Chapter", title: "Sushi", image: photos.sashimi },
+export const chefs = [
+  {
+    role: "Original chef",
+    name: "Patrick Cumaio",
+    text: "Baía’s original chef, from Mozambique, continues to bring his passion, flair, and deep connection to seafood to every plate. His culinary artistry has helped establish the reputation for which the house is known.",
+    image: "/chefs/patrick.jpg",
+  },
+  {
+    role: "Creator",
+    name: "Brian van Zijl",
+    text: "Creator, perfectionist, and artist, he transforms each dish into an experience. His attention to detail, visual artistry, and pursuit of flavour create dishes that are as captivating to look at as they are memorable to taste.",
+    image: "/chefs/brian.jpg",
+  },
 ];
 
 export type Dish = {
@@ -193,9 +207,21 @@ export const services = [
 ];
 
 export const timeline = [
-  { year: "2001", title: "Doors open", text: "Baía opens upstairs at Victoria Wharf, looking over the harbour." },
-  { year: "Signature", title: "The cataplana", text: "Prawns, langoustines, mussels, calamari, and linefish become the house feast." },
-  { year: "Today", title: "Four terraces", text: "A cocktail bar, interior rooms, and covered terraces. Fully licensed." },
+  {
+    year: "2001",
+    title: "Where it began",
+    text: "Opened at the V&A Waterfront, and known since as a landmark for fine cuisine and wine. The years between have been spent raising that standard, not resting on it.",
+  },
+  {
+    year: "Cuisine",
+    title: "Many traditions",
+    text: "Not one signature plate. A fusion of this coast’s seafood, Cape beef, venison and poultry, and a sushi bar of Japanese craft. The uniqueness is the range, held to a single standard.",
+  },
+  {
+    year: "Today",
+    title: "Room and terrace",
+    text: "A sophisticated dining room within. Outside, a terrace with a bespoke view of Table Mountain. The house is new, and it offers you both.",
+  },
 ];
 
 export const kitchen = [

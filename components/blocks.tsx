@@ -51,7 +51,7 @@ export function DishMarquee() {
   const loop = [...marquee, ...marquee];
   return (
     <section className="marquee" aria-label="Dishes">
-      <div className="marquee-row">
+      <div className="marquee-row" data-parallax="56">
         <div className="marquee-track">
           {loop.map((item, i) => (
             <span className="marquee-item" key={`a-${item.name}-${i}`}>
@@ -61,7 +61,7 @@ export function DishMarquee() {
           ))}
         </div>
       </div>
-      <div className="marquee-row marquee-row-rev">
+      <div className="marquee-row marquee-row-rev" data-parallax="-44">
         <div className="marquee-track">
           {loop.map((item, i) => (
             <span className="marquee-item" key={`b-${item.name}-${i}`}>
@@ -94,7 +94,7 @@ export function VideoBlock({ word = "Restaurant" }: { word?: string }) {
   return (
     <section className="video-block">
       <h2 className="video-word">{word}</h2>
-      <div className="video-frame">
+      <div className="video-frame" data-parallax="100">
         <video
           ref={film}
           src="/video/sushi-reel.mp4"
@@ -123,12 +123,14 @@ export function SponsorStrip({ line = "A cellar of rare Cape vintages" }: { line
   const loop = [...marks, ...marks];
   return (
     <section className="sponsors">
+      <div data-parallax="-56">
       <ul>
         {loop.map((mark, index) => (
           <li key={`${mark}-${index}`}>{mark}</li>
         ))}
       </ul>
-      <p>{line}</p>
+      </div>
+      <p data-parallax="40">{line}</p>
     </section>
   );
 }

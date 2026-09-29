@@ -63,7 +63,7 @@ export function MenusView() {
       </section>
       <section className="story story-tight">
         <div className="story-copy center">
-          <h2>Around the harbour, one plate at a time</h2>
+          <h2>For the appetite, and the occasion</h2>
           <div className="tabs">
             {storyTabs.map((item, index) => (
               <span key={item.id}>
