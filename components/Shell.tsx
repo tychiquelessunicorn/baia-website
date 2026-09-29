@@ -184,6 +184,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             aria-label="Open Shop 259, Entrance 5, V&A Waterfront, Cape Town 8001 in Google Maps"
           />
         </div>
+        <a className="btn-fill off-book" href={brand.booking}>Book Now</a>
       </div>
       {open && <button type="button" className="scrim" aria-label="Close panel" onClick={() => setOpen(false)} />}
 

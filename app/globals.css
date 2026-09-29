@@ -152,7 +152,8 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .off-line svg { width: 16px; height: 16px; color: var(--copper); flex: none; }
 .off-line:hover, .off-address:hover { color: var(--copper); }
 .off-address { color: var(--sage); line-height: 1.6; }
-.off-map { position: relative; flex: 1; min-height: 220px; background: #efe8dc; }
+.off-map { position: relative; flex: 1 1 200px; min-height: 200px; background: #efe8dc; }
+.off-book { width: 100%; flex: none; }
 .off-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1); pointer-events: none; }
 .scrim { position: fixed; inset: 0; background: rgba(46, 40, 34, 0.28); z-index: 55; }
 .sheet-close { align-self: flex-end; color: var(--copper); letter-spacing: 0.08em; }
@@ -714,108 +715,15 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .event-row img:hover, .ig-grid a:hover img, .about-intro img:hover, .insights img:hover, .video-frame:hover img, .dish:hover img {
   transform: scale(1.045);
 }
-.instagram .ig-grid { overflow: hidden; }
-.instagram .ig-grid a { display: block; animation: igRound1 3.6s linear infinite; }
-.instagram .ig-grid a:nth-child(2) { animation-name: igRound2; }
-.instagram .ig-grid a:nth-child(3) { animation-name: igRound3; }
-.instagram .ig-grid a:nth-child(4) { animation-name: igRound4; }
-.instagram .ig-grid a:nth-child(5) { animation-name: igRound5; }
-.instagram .ig-grid a:nth-child(6) { animation-name: igRound6; }
-@keyframes igRound1 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(100%, 0); }
-  33.333% { transform: translate(200%, 0); }
-  50% { transform: translate(200%, 100%); }
-  66.666% { transform: translate(100%, 100%); }
-  83.333% { transform: translate(0, 100%); }
-}
-@keyframes igRound2 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(100%, 0); }
-  33.333% { transform: translate(100%, 100%); }
-  50% { transform: translate(0, 100%); }
-  66.666% { transform: translate(-100%, 100%); }
-  83.333% { transform: translate(-100%, 0); }
-}
-@keyframes igRound3 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(0, 100%); }
-  33.333% { transform: translate(-100%, 100%); }
-  50% { transform: translate(-200%, 100%); }
-  66.666% { transform: translate(-200%, 0); }
-  83.333% { transform: translate(-100%, 0); }
-}
-@keyframes igRound4 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(0, -100%); }
-  33.333% { transform: translate(100%, -100%); }
-  50% { transform: translate(200%, -100%); }
-  66.666% { transform: translate(200%, 0); }
-  83.333% { transform: translate(100%, 0); }
-}
-@keyframes igRound5 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(-100%, 0); }
-  33.333% { transform: translate(-100%, -100%); }
-  50% { transform: translate(0, -100%); }
-  66.666% { transform: translate(100%, -100%); }
-  83.333% { transform: translate(100%, 0); }
-}
-@keyframes igRound6 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(-100%, 0); }
-  33.333% { transform: translate(-200%, 0); }
-  50% { transform: translate(-200%, -100%); }
-  66.666% { transform: translate(-100%, -100%); }
-  83.333% { transform: translate(0, -100%); }
-}
-@keyframes igRoundM1 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(100%, 0); }
-  33.333% { transform: translate(100%, 100%); }
-  50% { transform: translate(100%, 200%); }
-  66.666% { transform: translate(0, 200%); }
-  83.333% { transform: translate(0, 100%); }
-}
-@keyframes igRoundM2 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(0, 100%); }
-  33.333% { transform: translate(0, 200%); }
-  50% { transform: translate(-100%, 200%); }
-  66.666% { transform: translate(-100%, 100%); }
-  83.333% { transform: translate(-100%, 0); }
-}
-@keyframes igRoundM3 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(0, -100%); }
-  33.333% { transform: translate(100%, -100%); }
-  50% { transform: translate(100%, 0); }
-  66.666% { transform: translate(100%, 100%); }
-  83.333% { transform: translate(0, 100%); }
-}
-@keyframes igRoundM4 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(0, 100%); }
-  33.333% { transform: translate(-100%, 100%); }
-  50% { transform: translate(-100%, 0); }
-  66.666% { transform: translate(-100%, -100%); }
-  83.333% { transform: translate(0, -100%); }
-}
-@keyframes igRoundM5 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(0, -100%); }
-  33.333% { transform: translate(0, -200%); }
-  50% { transform: translate(100%, -200%); }
-  66.666% { transform: translate(100%, -100%); }
-  83.333% { transform: translate(100%, 0); }
-}
-@keyframes igRoundM6 {
-  0%, 100% { transform: translate(0, 0); }
-  16.666% { transform: translate(-100%, 0); }
-  33.333% { transform: translate(-100%, -100%); }
-  50% { transform: translate(-100%, -200%); }
-  66.666% { transform: translate(0, -200%); }
-  83.333% { transform: translate(0, -100%); }
+.instagram .ig-grid img { animation: igBreath 21s ease-in-out infinite; }
+.instagram .ig-grid a:nth-child(2) img { animation-delay: 3.5s; }
+.instagram .ig-grid a:nth-child(3) img { animation-delay: 7s; }
+.instagram .ig-grid a:nth-child(6) img { animation-delay: 10.5s; }
+.instagram .ig-grid a:nth-child(5) img { animation-delay: 14s; }
+.instagram .ig-grid a:nth-child(4) img { animation-delay: 17.5s; }
+@keyframes igBreath {
+  0%, 14%, 100% { transform: scale(1); }
+  5%, 9% { transform: scale(1.045); }
 }
 .story-photo:hover img { transform: translateY(-8%) scale(1.045); }
 .main-nav a, .foot-bottom a, .more { transition: color 0.3s ease, letter-spacing 0.3s ease; }
@@ -912,15 +820,14 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .hours-row h3 { font-size: 30px; }
 
   .instagram { display: grid; grid-template-columns: 1fr 1fr; justify-items: center; padding: 36px 24px 0; }
-  .ig-badge, .ig-badge.is-facebook { position: relative; left: auto; right: auto; top: auto; transform: none; width: 148px; height: 148px; margin: 0; font-size: 22px; }
+  .ig-badge, .ig-badge.is-facebook { position: relative; left: auto; right: auto; top: auto; transform: none; width: min(148px, 42vw); height: min(148px, 42vw); margin: 0; font-size: clamp(16px, 5vw, 22px); }
   .ig-grid { grid-column: 1 / -1; margin: 0; grid-template-columns: 1fr 1fr; }
   .ig-grid img { height: 180px; }
-  .instagram .ig-grid a:nth-child(1) { animation-name: igRoundM1; }
-  .instagram .ig-grid a:nth-child(2) { animation-name: igRoundM2; }
-  .instagram .ig-grid a:nth-child(3) { animation-name: igRoundM3; }
-  .instagram .ig-grid a:nth-child(4) { animation-name: igRoundM4; }
-  .instagram .ig-grid a:nth-child(5) { animation-name: igRoundM5; }
-  .instagram .ig-grid a:nth-child(6) { animation-name: igRoundM6; }
+  .instagram .ig-grid a:nth-child(2) img { animation-delay: 3.5s; }
+  .instagram .ig-grid a:nth-child(4) img { animation-delay: 7s; }
+  .instagram .ig-grid a:nth-child(6) img { animation-delay: 10.5s; }
+  .instagram .ig-grid a:nth-child(5) img { animation-delay: 14s; }
+  .instagram .ig-grid a:nth-child(3) img { animation-delay: 17.5s; }
 
   .site-footer { padding: 48px 24px 24px; }
   .foot-grid section { padding: 22px 12px; }
@@ -930,7 +837,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 }
 
 @media (max-width: 640px) {
-  .menu-chapters button { min-height: 46px; padding: 10px 2px; font-size: 13px; white-space: nowrap; }
+  .menu-chapters button { min-height: 46px; padding: 10px 1px; font-size: clamp(10px, 3.15vw, 13px); white-space: nowrap; }
   .services-row { grid-template-columns: 1fr; }
   .hero-copy h1 .hero-outline, .hero-copy p { margin-left: 0; }
   .hero-copy h1 .hero-outline { width: 100%; }
@@ -940,7 +847,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track, .motto p, .loader img.logo, .floral, .hero-copy h1, .hero-copy p, .hero-circle, .hero-photo, .hero-frame, .hero-caret, .sponsors ul, .quotes blockquote, .menu-modal, .menu-modal-card, .chef-frame, .chef-frame img, .chef-copy, .chef-line span, .chef-caret, .story-body p, .story-copy .tabs button.is-on::after, .video-cinema, .video-stage::after, .video-drift video, .play-btn, .play-triangle, .ig-grid img, .instagram .ig-grid a { animation: none; }
+  .marquee-track, .motto p, .loader img.logo, .floral, .hero-copy h1, .hero-copy p, .hero-circle, .hero-photo, .hero-frame, .hero-caret, .sponsors ul, .quotes blockquote, .menu-modal, .menu-modal-card, .chef-frame, .chef-frame img, .chef-copy, .chef-line span, .chef-caret, .story-body p, .story-copy .tabs button.is-on::after, .video-cinema, .video-stage::after, .video-drift video, .play-btn, .play-triangle, .ig-grid img { animation: none; }
   .video-cinema { clip-path: none; }
   .video-stage::after { opacity: 0; }
   .video-drift video { transform: none; }
