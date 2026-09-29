@@ -48,9 +48,9 @@ export const brand = {
     { label: "Dinner", time: "18:00–22:00" },
   ],
   headerAddress: ["Shop 259, Entrance 5", "V&A Waterfront"],
-  maps: "https://www.google.com/maps/search/?api=1&query=Baia+Seafood+Restaurant+Entrance+5+Shop+259+V%26A+Waterfront+Cape+Town",
+  maps: "https://www.google.com/maps/search/?api=1&query=Baia+Seafood+Restaurant+Shop+259+Entrance+5+V%26A+Waterfront+Cape+Town+8001",
   mapEmbed:
-    "https://maps.google.com/maps?q=Entrance%205%20Victoria%20Wharf%20V%26A%20Waterfront%20Cape%20Town&z=16&output=embed",
+    "https://maps.google.com/maps?q=Shop%20259%20Entrance%205%20V%26A%20Waterfront%20Cape%20Town%208001&z=16&output=embed",
 };
 
 export const heroSlides = [

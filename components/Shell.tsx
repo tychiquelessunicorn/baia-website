@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { brand, instagram } from "@/content/site";
+import { brand } from "@/content/site";
 import { Diamond, FacebookIcon, InstagramIcon, Logo, MailIcon, PhoneIcon } from "./icons";
 
 const pages = [
@@ -187,10 +187,15 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <a className="off-address" href={brand.maps} target="_blank" rel="noreferrer">
           Shop 259, Entrance 5, V&A Waterfront, Cape Town 8001
         </a>
-        <div className="off-grid">
-          {instagram.slice(0, 6).map((src) => (
-            <img key={src} src={src} alt="" />
-          ))}
+        <div className="off-map">
+          <iframe title="Map of Baía at the V&A Waterfront" src={brand.mapEmbed} loading="lazy" />
+          <a
+            className="map-open"
+            href={brand.maps}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open Shop 259, Entrance 5, V&A Waterfront, Cape Town 8001 in Google Maps"
+          />
         </div>
       </div>
       {open && <button type="button" className="scrim" aria-label="Close panel" onClick={() => setOpen(false)} />}
@@ -204,18 +209,19 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <section>
             <Diamond />
             <h2>Get In Touch</h2>
-            <p>T. <a href={brand.phoneHref}>{brand.phone}</a></p>
-            <p>M. <a href={brand.emailHref}>{brand.email}</a></p>
+            <p className="foot-contact">
+              <PhoneIcon />
+              <a href={brand.phoneHref}>{brand.phone}</a>
+            </p>
+            <p className="foot-contact">
+              <MailIcon />
+              <a href={brand.emailHref}>{brand.email}</a>
+            </p>
           </section>
           <section>
             <Diamond />
             <h2>Address</h2>
-            <p>Entrance 5, Shop 259<br />Victoria Wharf<br />V&A Waterfront, Cape Town</p>
-          </section>
-          <section>
-            <Diamond />
-            <h2>The Rooms</h2>
-            <p>A sophisticated dining room, and a terrace facing Table Mountain.</p>
+            <p>Shop 259, Entrance 5, V&A Waterfront, Cape Town 8001</p>
           </section>
           <section>
             <Diamond />

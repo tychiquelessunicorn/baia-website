@@ -445,7 +445,7 @@ export function HomeView() {
       </section>
 
       <section className="services" aria-label="The house">
-        <div className="services-row" data-parallax="82">
+        <div className="services-row">
           {services.map((item) => (
             <article key={item.title}>
               <Diamond />
@@ -457,25 +457,18 @@ export function HomeView() {
       </section>
 
       <section className="location" id="visit">
-        <div className="loc-top">
-          <div className="map-wrap" data-parallax="120">
+        <div className="loc-top" data-parallax="72">
+          <div className="map-wrap">
             <iframe title="Map of Baía at the V&A Waterfront" src={brand.mapEmbed} loading="lazy" />
-            <a className="open-maps" href={brand.maps} target="_blank" rel="noreferrer">Open in Maps</a>
+            <h2 className="map-title">Find us at Entrance 5, 1st Floor.</h2>
+            <a
+              className="map-open"
+              href={brand.maps}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Shop 259, Entrance 5, V&A Waterfront, Cape Town 8001 in Google Maps"
+            />
           </div>
-          <div className="loc-copy" data-parallax="-84">
-            <Floral />
-            <h2>Find us upstairs,<br />above Table Bay</h2>
-            <img src={photos.interior} alt="Interior dining" />
-          </div>
-        </div>
-        <div className="hours-row" data-parallax="64">
-          <div>
-            <p>{brand.address}, {brand.phone}, {brand.email}</p>
-            <h3>Opening Hours:</h3>
-            <p className="copper">{brand.lunch}</p>
-            <p className="copper">{brand.dinner}</p>
-          </div>
-          <a className="btn-line" href={brand.maps} target="_blank" rel="noreferrer">Get Direction ◇</a>
         </div>
       </section>
 
