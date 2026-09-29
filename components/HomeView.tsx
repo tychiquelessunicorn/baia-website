@@ -474,8 +474,9 @@ export function HomeView() {
 
       <section className="instagram" id="instagram">
         <a className="ig-badge" href={brand.instagram} target="_blank" rel="noreferrer">Instagram</a>
+        <a className="ig-badge is-facebook" href={brand.facebook} target="_blank" rel="noreferrer">Facebook</a>
         <div className="ig-grid" data-parallax="100">
-          {instagram.map((src, index) => (
+          {instagram.filter((src) => src !== photos.table && src !== photos.wine).map((src, index) => (
             <a key={`${src}-${index}`} href={brand.instagram} target="_blank" rel="noreferrer">
               <img src={src} alt="" />
             </a>

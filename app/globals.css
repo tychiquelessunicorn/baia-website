@@ -33,7 +33,9 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 500; margin: 0; }
 }
 img.logo {
   width: 180px; max-width: 180px; height: auto; object-fit: contain; border-radius: 0;
+  transition: transform 0.7s ease;
 }
+img.logo:hover { transform: scale(1.045); }
 .loader img.logo { width: 168px; max-width: 168px; animation: logoBlink 1.5s ease-in-out infinite; }
 @keyframes logoBlink {
   0%, 38% { opacity: 1; }
@@ -155,7 +157,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .scrim { position: fixed; inset: 0; background: rgba(46, 40, 34, 0.28); z-index: 55; }
 .sheet-close { align-self: flex-end; color: var(--copper); letter-spacing: 0.08em; }
 
-#book, #story, #explore, #visit, #instagram { scroll-margin-top: 110px; }
+#book, #story, #explore, #visit, #instagram, #chefs, #footer { scroll-margin-top: 110px; }
 
 .hero {
   position: relative;
@@ -498,7 +500,8 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   border: 1px solid var(--copper); border-radius: 50%;
   display: grid; place-items: center; font-family: var(--font-serif); font-size: 42px;
 }
-.ig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-left: 16vw; }
+.ig-badge.is-facebook { left: auto; right: 4vw; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-left: 16vw; margin-right: 16vw; }
 .ig-grid img { height: 250px; width: 100%; }
 
 .site-footer { padding: 72px 4vw 28px; position: relative; }
@@ -711,6 +714,16 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .event-row img:hover, .ig-grid a:hover img, .about-intro img:hover, .insights img:hover, .video-frame:hover img, .dish:hover img {
   transform: scale(1.045);
 }
+.ig-grid img { animation: igLift 12.6s ease infinite; }
+.ig-grid a:nth-child(2) img { animation-delay: 2.1s; }
+.ig-grid a:nth-child(3) img { animation-delay: 4.2s; }
+.ig-grid a:nth-child(4) img { animation-delay: 6.3s; }
+.ig-grid a:nth-child(5) img { animation-delay: 8.4s; }
+.ig-grid a:nth-child(6) img { animation-delay: 10.5s; }
+@keyframes igLift {
+  0%, 16.67%, 100% { transform: scale(1); }
+  5.56%, 11.11% { transform: scale(1.045); }
+}
 .story-photo:hover img { transform: translateY(-8%) scale(1.045); }
 .main-nav a, .foot-bottom a, .more { transition: color 0.3s ease, letter-spacing 0.3s ease; }
 .main-nav a { position: relative; }
@@ -805,8 +818,9 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .hours-row { flex-direction: column; align-items: flex-start; padding: 24px 0 8px; }
   .hours-row h3 { font-size: 30px; }
 
-  .ig-badge { position: relative; left: auto; top: auto; transform: none; width: 160px; height: 160px; margin: 0 auto 16px; font-size: 26px; }
-  .ig-grid { margin-left: 0; grid-template-columns: 1fr 1fr; }
+  .instagram { display: grid; grid-template-columns: 1fr 1fr; justify-items: center; padding: 36px 24px 0; }
+  .ig-badge, .ig-badge.is-facebook { position: relative; left: auto; right: auto; top: auto; transform: none; width: 148px; height: 148px; margin: 0; font-size: 22px; }
+  .ig-grid { grid-column: 1 / -1; margin: 0; grid-template-columns: 1fr 1fr; }
   .ig-grid img { height: 180px; }
 
   .site-footer { padding: 48px 24px 24px; }
@@ -826,7 +840,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track, .motto p, .loader img.logo, .floral, .hero-copy h1, .hero-copy p, .hero-circle, .hero-photo, .hero-frame, .hero-caret, .sponsors ul, .quotes blockquote, .menu-modal, .menu-modal-card, .chef-frame, .chef-frame img, .chef-copy, .chef-line span, .chef-caret, .story-body p, .story-copy .tabs button.is-on::after, .video-cinema, .video-stage::after, .video-drift video, .play-btn, .play-triangle { animation: none; }
+  .marquee-track, .motto p, .loader img.logo, .floral, .hero-copy h1, .hero-copy p, .hero-circle, .hero-photo, .hero-frame, .hero-caret, .sponsors ul, .quotes blockquote, .menu-modal, .menu-modal-card, .chef-frame, .chef-frame img, .chef-copy, .chef-line span, .chef-caret, .story-body p, .story-copy .tabs button.is-on::after, .video-cinema, .video-stage::after, .video-drift video, .play-btn, .play-triangle, .ig-grid img { animation: none; }
   .video-cinema { clip-path: none; }
   .video-stage::after { opacity: 0; }
   .video-drift video { transform: none; }

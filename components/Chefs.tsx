@@ -63,7 +63,7 @@ export function Chefs() {
   }, [epoch, motion, seen]);
 
   return (
-    <section className="chefs" aria-label="The chefs" ref={sectionRef}>
+    <section className="chefs" id="chefs" aria-label="The chefs" ref={sectionRef}>
       <div className="chefs-head" data-parallax="-64">
         <div>
           <p className="kicker">The kitchen</p>

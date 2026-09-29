@@ -6,11 +6,6 @@ import { useEffect, useState } from "react";
 import { brand } from "@/content/site";
 import { Diamond, FacebookIcon, InstagramIcon, Logo, MailIcon, PhoneIcon } from "./icons";
 
-const pages = [
-  { href: "/#story", label: "About Us" },
-  { href: "/#book", label: "Reservation" },
-];
-
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [stuck, setStuck] = useState(false);
@@ -141,18 +136,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <Diamond />
             <Link href="/#explore">Menus</Link>
             <Diamond />
-            <div className="has-drop">
-              <button type="button">Pages <span>▾</span></button>
-              <div className="drop">
-                {pages.map((item) => (
-                  <Link key={item.href} href={item.href}>{item.label}</Link>
-                ))}
-              </div>
-            </div>
+            <Link href="/#chefs">Chefs</Link>
             <Diamond />
-            <Link href="/#instagram">News</Link>
+            <Link href="/#footer">News</Link>
             <Diamond />
-            <Link href="/#visit">Contact</Link>
+            <a href={brand.booking}>Book Now</a>
           </nav>
           <button type="button" className="dot-grid" aria-label="Open panel" onClick={() => setOpen(true)}>
             {Array.from({ length: 9 }).map((_, i) => <i key={i} />)}
@@ -165,10 +153,9 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <button type="button" className="sheet-close" onClick={() => setMobile(false)}>Close</button>
           <Link href="/">Home</Link>
           <Link href="/#explore">Menus</Link>
-          {pages.map((item) => (
-            <Link key={item.href} href={item.href}>{item.label}</Link>
-          ))}
-          <Link href="/#visit">Contact</Link>
+          <Link href="/#chefs">Chefs</Link>
+          <Link href="/#footer">News</Link>
+          <a href={brand.booking}>Book Now</a>
         </div>
       )}
 
@@ -204,7 +191,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <div className="cursor-inner" aria-hidden="true" />
       <main>{children}</main>
 
-      <footer className="site-footer">
+      <footer className="site-footer" id="footer">
         <div className="foot-grid" data-parallax="90">
           <section>
             <Diamond />
