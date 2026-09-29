@@ -74,7 +74,7 @@ export const heroSlides = [
   },
   {
     title: "The",
-    outline: "Atmosphere",
+    outline: "View",
     text: "Beautiful inside. Alive outside. Quiet for two, or lively for a group. Be ready to experience Cape Town's best coastal vibe.",
     image: "/atmosphere/hero-4.jpg",
   },

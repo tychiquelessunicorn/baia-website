@@ -138,7 +138,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <Diamond />
             <Link href="/#chefs">Chefs</Link>
             <Diamond />
-            <Link href="/#footer">News</Link>
+            <Link href="/#footer">Contact</Link>
             <Diamond />
             <a href={brand.booking}>Book Now</a>
           </nav>
@@ -154,7 +154,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <Link href="/">Home</Link>
           <Link href="/#explore">Menus</Link>
           <Link href="/#chefs">Chefs</Link>
-          <Link href="/#footer">News</Link>
+          <Link href="/#footer">Contact</Link>
           <a href={brand.booking}>Book Now</a>
         </div>
       )}

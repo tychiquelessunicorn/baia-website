@@ -334,7 +334,7 @@ export function HomeView() {
         <div className="hero-dots" role="tablist" aria-label="Hero slides">
           {heroSlides.map((item, index) => (
             <button
-              key={item.outline}
+              key={item.image}
               type="button"
               className={index === slide ? "is-on" : ""}
               aria-label={`Slide ${index + 1}`}
