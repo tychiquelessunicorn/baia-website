@@ -22,9 +22,36 @@ const TYPE_GAP = 440;
 const TYPE_START = 200;
 
 function HeroTitle({ title, outline }: { title: string; outline: string }) {
+  const outlineRef = useRef<HTMLSpanElement>(null);
   const [titleCount, setTitleCount] = useState(0);
   const [outlineCount, setOutlineCount] = useState(0);
   const [caret, setCaret] = useState<"title" | "outline" | null>("title");
+
+  useEffect(() => {
+    const el = outlineRef.current;
+    if (!el) return;
+    let alive = true;
+    const fit = () => {
+      if (!alive) return;
+      const ghost = el.querySelector(".hero-ghost");
+      const copy = el.closest(".hero-copy");
+      if (!(ghost instanceof HTMLElement) || !copy) return;
+      el.style.fontSize = "";
+      const ghostBox = ghost.getBoundingClientRect();
+      const limit = copy.getBoundingClientRect().right - 16;
+      if (ghostBox.width > 0 && ghostBox.right > limit) {
+        const size = parseFloat(getComputedStyle(el).fontSize);
+        el.style.fontSize = `${size * ((limit - ghostBox.left) / ghostBox.width)}px`;
+      }
+    };
+    fit();
+    document.fonts?.ready.then(fit);
+    window.addEventListener("resize", fit);
+    return () => {
+      alive = false;
+      window.removeEventListener("resize", fit);
+    };
+  }, [outline]);
 
   useEffect(() => {
     const copy = document.querySelector(".hero-copy");
@@ -92,7 +119,7 @@ function HeroTitle({ title, outline }: { title: string; outline: string }) {
           {caret === "title" && <i className="hero-caret" />}
         </span>
       </span>
-      <span className="hero-line hero-outline">
+      <span className="hero-line hero-outline" ref={outlineRef}>
         <span className="hero-ghost" aria-hidden="true">{outline}</span>
         <span className="hero-live" aria-hidden="true">
           {outline.slice(0, outlineCount)}

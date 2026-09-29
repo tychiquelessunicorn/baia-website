@@ -56,32 +56,32 @@ export const brand = {
 export const heroSlides = [
   {
     title: "The",
-    outline: "Bay",
-    text: "Baía means the bay. Take a new table before Table Mountain, above Cape Town's working harbour, and watch the city become the view.",
+    outline: "View",
+    text: "Outside, Table Mountain and the harbour. Inside, an absolute luxury. Dine with the Table mountain facing you.",
     image: "/atmosphere/hero-1.jpg",
   },
   {
     title: "The",
-    outline: "Cellar",
-    text: "Indulge from the first glass. Champagne, bespoke Cape wine, and cocktails composed for the hour the mountain turns to gold.",
+    outline: "Kitchen",
+    text: "We bring the sea to your plate and still offer the primest meat and poultry. And sushi, our new addition, is plate for you.",
     image: "/atmosphere/hero-2.jpg",
   },
   {
     title: "The",
-    outline: "Room",
-    text: "Two chefs. One pursuit. Patrick Cumaio, from Mozambique, brings the sea to the plate. Brian van Zijl, the artist, makes you look before you taste.",
+    outline: "Cellar",
+    text: "Cape wine with a spine. Champagne. Bespoke cocktails we wrote. Or none. Choose. The glass is already yours.",
     image: "/atmosphere/hero-3.jpg",
   },
   {
     title: "The",
-    outline: "House",
-    text: "A new house on the water, built for the long evening. Relax here. Chef Daisuke's sushi, five generations of Japanese craft, now belongs to the bay.",
+    outline: "Atmosphere",
+    text: "Beautiful inside. Alive outside. Quiet for two, or lively for a group. Be ready to experience Cape Town's best coastal vibe.",
     image: "/atmosphere/hero-4.jpg",
   },
   {
-    title: "Every",
-    outline: "Visit",
-    text: "Come and experience Baía. Lunch or dinner, this is a journey by the sea: the mountain, the cellar, and the rare pleasure of being truly looked after.",
+    title: "The",
+    outline: "Occasion",
+    text: "Romance. Family. Business. A party. Or even a private function. Name the occasion. Baía is perfectly dressed for you.",
     image: "/atmosphere/hero-5.jpg",
   },
 ];
