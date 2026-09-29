@@ -77,42 +77,106 @@ export function DishMarquee() {
 
 export function VideoBlock({ word = "Restaurant" }: { word?: string }) {
   const film = useRef<HTMLVideoElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState(false);
+  const [seen, setSeen] = useState(false);
   const [playing, setPlaying] = useState(false);
 
-  const toggle = () => {
+  const play = () => {
     const node = film.current;
     if (!node) return;
-    if (node.paused) {
-      void node.play();
-      setPlaying(true);
-    } else {
-      node.pause();
-      setPlaying(false);
+    void node.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+  };
+
+  const pause = () => {
+    film.current?.pause();
+    setPlaying(false);
+  };
+
+  const openFilm = () => {
+    setSeen(true);
+    setOpen(true);
+    play();
+  };
+
+  const closeFilm = () => {
+    pause();
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeFilm();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const onStageClick = () => {
+    if (!open) {
+      openFilm();
+      return;
     }
+    if (film.current?.paused) play();
+    else pause();
   };
 
   return (
-    <section className="video-block">
+    <section className={`video-block${open ? " is-cinema" : ""}${seen ? " was-cinema" : ""}`}>
       <h2 className="video-word">{word}</h2>
-      <div className="video-frame" data-parallax="100">
-        <video
-          ref={film}
-          src="/video/sushi-reel.mp4"
-          poster="/video/sushi-poster.jpg"
-          playsInline
-          loop
-          preload="none"
-          onEnded={() => setPlaying(false)}
-          aria-label="Sushi at the Baía bar"
-        />
-        <button
-          type="button"
-          className={`play-btn ${playing ? "is-hidden" : ""}`}
-          onClick={toggle}
-          aria-label={playing ? "Pause the film" : "Play the film"}
+      <div className="video-stage">
+        <div
+          className="video-cinema"
+          onClick={onStageClick}
+          role={open ? "dialog" : undefined}
+          aria-modal={open || undefined}
+          aria-label={open ? word : undefined}
         >
-          <PlayMark />
-        </button>
+          <div className="video-drift" data-parallax="150">
+            <video
+              ref={film}
+              src="/video/sushi-reel.mp4"
+              poster="/video/sushi-poster.jpg"
+              playsInline
+              loop
+              preload="none"
+              onEnded={() => setPlaying(false)}
+              aria-label="Sushi at the Baía bar"
+            />
+          </div>
+          <button
+            type="button"
+            className={`play-btn ${playing ? "is-hidden" : ""}`}
+            onClick={(event) => {
+              event.stopPropagation();
+              onStageClick();
+            }}
+            aria-label={playing ? "Pause the film" : "Play the film"}
+          >
+            <PlayMark />
+          </button>
+          {open ? (
+            <button
+              ref={closeRef}
+              type="button"
+              className="video-cinema-close"
+              aria-label="Close the film"
+              onClick={(event) => {
+                event.stopPropagation();
+                closeFilm();
+              }}
+            >
+              Close
+            </button>
+          ) : null}
+        </div>
       </div>
     </section>
   );

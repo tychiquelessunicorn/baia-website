@@ -139,7 +139,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <nav className="main-nav" aria-label="Primary">
             <Link href="/" className={pathname === "/" ? "is-active" : ""}>Home</Link>
             <Diamond />
-            <Link href="/#menu">Menus</Link>
+            <Link href="/#explore">Menus</Link>
             <Diamond />
             <div className="has-drop">
               <button type="button">Pages <span>▾</span></button>
@@ -164,7 +164,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <div className="mobile-nav">
           <button type="button" className="sheet-close" onClick={() => setMobile(false)}>Close</button>
           <Link href="/">Home</Link>
-          <Link href="/#menu">Menus</Link>
+          <Link href="/#explore">Menus</Link>
           {pages.map((item) => (
             <Link key={item.href} href={item.href}>{item.label}</Link>
           ))}

@@ -4,11 +4,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   brand,
-  dishes,
   events,
   heroSlides,
   instagram,
-  menuTabs,
   photos,
   quotes,
   services,
@@ -119,7 +117,6 @@ export function HomeView() {
   const pendingRef = useRef(0);
   const storyReady = useRef(false);
   const [quote, setQuote] = useState(0);
-  const [menu, setMenu] = useState<(typeof menuTabs)[number]["id"]>("cocktails");
   const [eventIndex, setEventIndex] = useState(0);
 
   useEffect(() => {
@@ -247,7 +244,6 @@ export function HomeView() {
   }, []);
 
   const current = heroSlides[slide];
-  const shown = dishes.filter((dish) => dish.category === menu).slice(0, 3);
   const visibleEvents = [0, 1, 2].map((offset) => events[(eventIndex + offset) % events.length]);
 
   return (
@@ -392,18 +388,26 @@ export function HomeView() {
             <Floral />
           </div>
           <h2 className="quotes-title">Users feedback</h2>
-          <p className="stars" aria-label="5 stars">★★★★★</p>
-          <blockquote>“ {quotes[quote].text} ”</blockquote>
-          <figure>
-            <img src={quotes[quote].image} alt="" />
-            <figcaption>
-              <strong>{quotes[quote].name}</strong>
-              <span>{quotes[quote].role}</span>
-            </figcaption>
-          </figure>
+          <a
+            className="quotes-link"
+            href={quotes[quote].href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Read ${quotes[quote].name}'s review on ${quotes[quote].source}`}
+          >
+            <p className="stars" aria-hidden="true">{"★".repeat(quotes[quote].rating)}</p>
+            <blockquote>“ {quotes[quote].text} ”</blockquote>
+            <figure>
+              <img src={quotes[quote].image} alt={quotes[quote].name} />
+              <figcaption>
+                <strong>{quotes[quote].name}</strong>
+                <span>{quotes[quote].source} · {quotes[quote].when}</span>
+              </figcaption>
+            </figure>
+          </a>
           <div className="pager">
             {quotes.map((item, index) => (
-              <button key={item.role} type="button" className={index === quote ? "is-on" : ""} onClick={() => setQuote(index)}>
+              <button key={`${item.name}-${item.when}`} type="button" className={index === quote ? "is-on" : ""} onClick={() => setQuote(index)}>
                 {index + 1}
               </button>
             ))}
@@ -413,41 +417,7 @@ export function HomeView() {
 
       <DishMarquee />
 
-      <section className="featured" id="menu">
-        <div className="featured-photo" data-parallax="-110">
-          <img src={photos.warmRoom} alt="The dining room at night" />
-        </div>
-        <div className="featured-copy" data-parallax="78">
-          <div className="tabs tabs-lg">
-            {menuTabs.map((item, index) => (
-              <span key={item.id}>
-                {index > 0 && <Diamond />}
-                <button type="button" className={menu === item.id ? "is-on" : ""} onClick={() => setMenu(item.id)}>
-                  {item.label}
-                </button>
-              </span>
-            ))}
-          </div>
-          {shown.map((dish) => (
-            <article className="dish" key={dish.name}>
-              <img src={dish.image} alt="" />
-              <div>
-                <div className="dish-line">
-                  <h3>{dish.name}</h3>
-                  <i />
-                  <p className="price">
-                    {dish.was && <s>{dish.was}</s>} {dish.price}
-                  </p>
-                </div>
-                <p>{dish.description}</p>
-              </div>
-            </article>
-          ))}
-          <Link href="#menu" className="more">Explore More Dish</Link>
-        </div>
-      </section>
-
-      <VideoBlock />
+      <VideoBlock word="The new home" />
 
       <section className="events">
         <div data-parallax="-70">

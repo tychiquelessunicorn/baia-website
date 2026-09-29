@@ -149,24 +149,117 @@ export const menuTabs = [
   { id: "mains" as const, label: "Mains" },
 ];
 
+// Five-bubble Tripadvisor notes only, with no complaint in the text.
+// image is that guest's profile picture on Tripadvisor.
+// href opens that review, not the restaurant's review list.
 export const quotes = [
   {
-    text: "A room that understands the coast. The platter arrives as a feast, and the cellar is poured with the same care.",
-    name: "Guest",
-    role: "Victoria Wharf",
-    image: photos.platter,
+    text: "We had a fabulous experience a Baia. Alfred our waiter was super helpful. We shared a warm seafood platter and a sea food salad. The seafood was truly beautiful and perfectly cooked. The service was brilliant. Would highly recommend if you are staying in the V & A Waterfront.",
+    name: "firenzo71",
+    source: "Tripadvisor",
+    when: "September 2026",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1079598096-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/firenzo71.jpg",
   },
   {
-    text: "The cataplana is the reason to book. Prawns, langoustines, mussels, and linefish, brought to the table still fragrant.",
-    name: "Guest",
-    role: "The terraces",
-    image: photos.prawns,
+    text: "We went here on a recommendation. We were not disappointed. Excellent sea bass. One to go back to.",
+    name: "Westlawns",
+    source: "Tripadvisor",
+    when: "September 2026",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1078996005-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/westlawns.jpg",
   },
   {
-    text: "Table Mountain, harbour light, and a wine list that never raises its voice. Lunch here is a long, quiet pleasure.",
-    name: "Guest",
-    role: "Cape Town",
-    image: photos.dining,
+    text: "We had a fantastic experience at Baia! The wild oysters from Mossel Bay, langoustines and rock lobster were absolutely delicious — fresh, beautifully prepared, and full of flavour. A special mention goes to Debra (from Zambia) who was an amazing waitress. She was warm, attentive, friendly, and made our evening even more enjoyable. Great food, excellent wine, and wonderful service.",
+    name: "Magaluf",
+    source: "Tripadvisor",
+    when: "September 2026",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1077633078-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/magaluf.jpg",
+  },
+  {
+    text: "The food from this restaurant surprised both me and my son. We are not really very fish fans, but the linefish we ate there was EXCEPCIONAL. Very good service, nice place, inside the shopping V&A Wharf. Super recommend!!!",
+    name: "VaniaBrazil",
+    source: "Tripadvisor",
+    when: "March 2026",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1053924565-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/vaniabrazil.jpg",
+  },
+  {
+    text: "This was our final night in Cape Town and what a very enjoyable meal we shared at Baía. A shared starter of grilled sardines to begin with excellent fresh small bread rolls. We then both chose the prawn and lobster main course served with half rice and half chips which was superb. The flavour was exceptional.",
+    name: "Royston S",
+    source: "Tripadvisor",
+    when: "February 2026",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1048945264-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/royston.jpg",
+  },
+  {
+    text: "There are plenty of places to get seafood in Capetown, but ONLY one place to eat it safely and enjoyably. That’s BAIA in the waterfront. I have been eating here for over 5 years and never had a bad meal.",
+    name: "drmalcolm",
+    source: "Tripadvisor",
+    when: "January 2026",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1047510301-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/drmalcolm.jpg",
+  },
+  {
+    text: "We had a very friendly welcome and the table gave us a great view of the sea. The food was outstanding and the service just as good. Definitely the best place to go for seafood.",
+    name: "Andrew A",
+    source: "Tripadvisor",
+    when: "January 2026",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1046190251-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/andrew-a.jpg",
+  },
+  {
+    text: "One of the best restaurants in Cape Town. Very good food and very nice staff. When we are in Cape Town, the Baia is always on the agenda.",
+    name: "Christiane W",
+    source: "Tripadvisor",
+    when: "January 2026",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1047315773-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/christiane.jpg",
+  },
+  {
+    text: "Wonderful seafood restaurant. The second time I was here and it was just as good both times. Everyone was super happy!",
+    name: "Cecilia R",
+    source: "Tripadvisor",
+    when: "January 2026",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1045352179-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/cecilia.jpg",
+  },
+  {
+    text: "The restaurant was recommended by a local guide to taste the delicious lobsters. Great experience with friendly staff. Very good lobsters! If you pass through here try this restaurant.",
+    name: "16niko73",
+    source: "Tripadvisor",
+    when: "December 2025",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1045166481-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/niko.jpg",
+  },
+  {
+    text: "Excellent service, great location, generous portions and the freshest seafood packed full of flavour. The lobster tails followed by the Mozambican prawns were cooked to perfection. Would definitely return.",
+    name: "georgereid",
+    source: "Tripadvisor",
+    when: "August 2025",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1032364295-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/georgereid.jpg",
+  },
+  {
+    text: "Baia is well-mannered and welcoming with a diverse menu and well-deserved reputation for excellent seafood. We were not disappointed. Attentive, friendly waiting staff served us great food.",
+    name: "David S",
+    source: "Tripadvisor",
+    when: "August 2025",
+    rating: 5,
+    href: "https://www.tripadvisor.com/ShowUserReviews-g312659-d786129-r1027453733-Baia_Seafood_Restaurant-Cape_Town_Central_Western_Cape.html",
+    image: "/reviews/david-s.jpg",
   },
 ];
 
@@ -200,10 +293,9 @@ export const instagram = [
 ];
 
 export const services = [
-  { title: "Fine Dining", text: "Continental cooking and Portuguese colonial tradition, on one menu." },
-  { title: "Cocktail Bar", text: "A bar for the harbour hour, before lunch or after the last course." },
-  { title: "Halaal Friendly", text: "The kitchen is halaal friendly. Tell us when you reserve." },
-  { title: "Functions", text: "Set menus for corporate and private tables. Parties of eight require a deposit." },
+  { title: "Fine Dining", text: "Seafood, meat, and poultry are served together across our fine-dining menu." },
+  { title: "Halaal Friendly", text: "The kitchen is halaal friendly. Please tell us when you reserve your table." },
+  { title: "Functions", text: "Set menus for corporate or private tables. Eight or more require a deposit." },
 ];
 
 export const timeline = [
