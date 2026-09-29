@@ -715,12 +715,12 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .event-row img:hover, .ig-grid a:hover img, .about-intro img:hover, .insights img:hover, .video-frame:hover img, .dish:hover img {
   transform: scale(1.045);
 }
-.instagram .ig-grid img { animation: igBreath 21s ease-in-out infinite; }
-.instagram .ig-grid a:nth-child(2) img { animation-delay: 3.5s; }
-.instagram .ig-grid a:nth-child(3) img { animation-delay: 7s; }
-.instagram .ig-grid a:nth-child(6) img { animation-delay: 10.5s; }
-.instagram .ig-grid a:nth-child(5) img { animation-delay: 14s; }
-.instagram .ig-grid a:nth-child(4) img { animation-delay: 17.5s; }
+.instagram .ig-grid img { animation: igBreath 15s ease-in-out infinite; }
+.instagram .ig-grid a:nth-child(2) img { animation-delay: 2.5s; }
+.instagram .ig-grid a:nth-child(3) img { animation-delay: 5s; }
+.instagram .ig-grid a:nth-child(6) img { animation-delay: 7.5s; }
+.instagram .ig-grid a:nth-child(5) img { animation-delay: 10s; }
+.instagram .ig-grid a:nth-child(4) img { animation-delay: 12.5s; }
 @keyframes igBreath {
   0%, 14%, 100% { transform: scale(1); }
   5%, 9% { transform: scale(1.045); }
@@ -823,11 +823,11 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .ig-badge, .ig-badge.is-facebook { position: relative; left: auto; right: auto; top: auto; transform: none; width: min(148px, 42vw); height: min(148px, 42vw); margin: 0; font-size: clamp(16px, 5vw, 22px); }
   .ig-grid { grid-column: 1 / -1; margin: 0; grid-template-columns: 1fr 1fr; }
   .ig-grid img { height: 180px; }
-  .instagram .ig-grid a:nth-child(2) img { animation-delay: 3.5s; }
-  .instagram .ig-grid a:nth-child(4) img { animation-delay: 7s; }
-  .instagram .ig-grid a:nth-child(6) img { animation-delay: 10.5s; }
-  .instagram .ig-grid a:nth-child(5) img { animation-delay: 14s; }
-  .instagram .ig-grid a:nth-child(3) img { animation-delay: 17.5s; }
+  .instagram .ig-grid a:nth-child(2) img { animation-delay: 2.5s; }
+  .instagram .ig-grid a:nth-child(4) img { animation-delay: 5s; }
+  .instagram .ig-grid a:nth-child(6) img { animation-delay: 7.5s; }
+  .instagram .ig-grid a:nth-child(5) img { animation-delay: 10s; }
+  .instagram .ig-grid a:nth-child(3) img { animation-delay: 12.5s; }
 
   .site-footer { padding: 48px 24px 24px; }
   .foot-grid section { padding: 22px 12px; }
