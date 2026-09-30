@@ -56,6 +56,18 @@ export const brand = {
 export const heroSlides = [
   {
     title: "The",
+    outline: "Vibe",
+    text: "Beautiful inside. Alive outside. Quiet for two, or lively for a group. Be ready to experience Cape Town's best coastal vibe.",
+    image: "/atmosphere/hero-4.jpg?v=2",
+  },
+  {
+    title: "The",
+    outline: "Occasion",
+    text: "Romance. Family. Business. A party. Or even a private function. Name the occasion. Baía is perfectly dressed for you.",
+    image: "/atmosphere/hero-5.jpg?v=2",
+  },
+  {
+    title: "The",
     outline: "View",
     text: "Outside, Table Mountain and the harbour. Inside, an absolute luxury. Dine with the Table mountain facing you.",
     image: "/atmosphere/hero-1.jpg?v=2",
@@ -71,18 +83,6 @@ export const heroSlides = [
     outline: "Cellar",
     text: "Cape wine with a spine. Champagne. Bespoke cocktails we wrote. Or none. Choose. The glass is already yours.",
     image: "/atmosphere/hero-3.jpg?v=2",
-  },
-  {
-    title: "The",
-    outline: "Vibe",
-    text: "Beautiful inside. Alive outside. Quiet for two, or lively for a group. Be ready to experience Cape Town's best coastal vibe.",
-    image: "/atmosphere/hero-4.jpg?v=2",
-  },
-  {
-    title: "The",
-    outline: "Occasion",
-    text: "Romance. Family. Business. A party. Or even a private function. Name the occasion. Baía is perfectly dressed for you.",
-    image: "/atmosphere/hero-5.jpg?v=2",
   },
 ];
 
