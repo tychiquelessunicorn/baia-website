@@ -354,7 +354,7 @@ export function HomeView() {
         <div className="story-mark">
           <Floral />
         </div>
-        <h2 className="quotes-title">Users feedback</h2>
+        <h2 className="quotes-title">Guests feedback</h2>
         <a
           className="quotes-link"
           href={quotes[quote].href}
@@ -395,6 +395,7 @@ export function HomeView() {
             </article>
           ))}
         </div>
+        <a className="btn-fill services-book" href={brand.booking}>Book A Seat</a>
       </section>
 
       <section className="location" id="visit">

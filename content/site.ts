@@ -108,7 +108,7 @@ export const aboutNotes = [
   {
     index: "I",
     title: "The word",
-    text: "There is a Portuguese word for the bay. Baía, said Ba-hia. In 2001 Louis and Daryl took it, not to describe a view, but to name a standard the house would have to keep. Every year since has been an attempt to deserve the word.",
+    text: "There is a Portuguese word for the bay. Baía, said Ba-hia. In 2001 Luis Viana and Daryl Mendelsohn owned it, not to describe a view, but to name a standard and legacy the house would have to keep. Every year since has been an attempt to deserve the word.",
   },
   {
     index: "II",
@@ -118,7 +118,7 @@ export const aboutNotes = [
   {
     index: "III",
     title: "The rebuilding",
-    text: "The walls came last. A new house was raised so a promise already decades old would have rooms equal to it, the harbour and the water still in view. Brian came to give the cooking a new touch. What you see is new. What people came for was never the building.",
+    text: "The walls came last. A new house was raised so a promise already decades old would have rooms equal to it, the harbour and the water still in view. Brian came to give the cooking a new touch. The building is new. The evening people came for is not.",
   },
 ];
 

@@ -55,14 +55,12 @@ export function AboutStory() {
         <div>
           <p className="kicker">About us</p>
           <h2>
-            A name,
-            <br />
-            then a reputation,
-            <br />
-            then a house.
+            <span className="about-line"><span>A name,</span></span>
+            <span className="about-line"><span>then a reputation,</span></span>
+            <span className="about-line"><span>then a house.</span></span>
           </h2>
         </div>
-        <p>Louis and Daryl opened the house in 2001. Patrick set its cooking. Brian has come to give it a new touch.</p>
+        <p className="about-deck">Luis Viana and Daryl Mendelsohn opened the house in 2001. Patrick set its cooking. Brian has come to give it a new touch.</p>
       </div>
       <div className="about-spread">
         {aboutNotes.map((note) => (
