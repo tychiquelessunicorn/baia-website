@@ -274,6 +274,7 @@ export function HomeView() {
         <div className="hero-copy">
           <HeroTitle key={current.outline} title={current.title} outline={current.outline} />
           <p key={current.text}>{current.text}</p>
+          <div className="hero-actions">
           <Link
             href="#explore"
             className="hero-circle"
@@ -309,6 +310,10 @@ export function HomeView() {
           >
             Our<br />Menus
           </Link>
+          <a className="hero-circle is-gold" href={brand.booking} target="_blank" rel="noreferrer">
+            Book<br />Now
+          </a>
+          </div>
         </div>
         <div
           className="hero-dots"
@@ -344,10 +349,10 @@ export function HomeView() {
             <ul className="booking-facts">
               <li>Lunch 12:00–15:30</li>
               <li>Dinner 18:00–22:00</li>
-              <li>Eight or more · R150 deposit per person</li>
+              <li>Eight or more · Deposit per person</li>
             </ul>
           </div>
-          <a className="btn-fill booking-cta" href={brand.booking}>Book A Seat</a>
+          <a className="btn-fill booking-cta" href={brand.booking} target="_blank" rel="noreferrer">Book A Seat</a>
         </div>
       </section>
 
@@ -357,7 +362,7 @@ export function HomeView() {
         </div>
         <Reveal className="story-grid">
           <div className="story-photo">
-            <img src={photos.interior} alt="The dining room" />
+            <img key={storyTabs[copyIndex].photos[0].src} src={storyTabs[copyIndex].photos[0].src} alt={storyTabs[copyIndex].photos[0].alt} />
           </div>
           <div className="story-copy">
             <h2>For the appetite, and the occasion</h2>
@@ -380,10 +385,10 @@ export function HomeView() {
                 {storyTabs[copyIndex].body}
               </p>
             </div>
-            <a className="btn-line" href={brand.booking}>◇ Find A Table ◇</a>
+            <a className="btn-line" href={brand.booking} target="_blank" rel="noreferrer">◇ Find A Table ◇</a>
           </div>
           <div className="story-photo">
-            <img src={photos.prawns} alt="Seared scallops" />
+            <img key={storyTabs[copyIndex].photos[1].src} src={storyTabs[copyIndex].photos[1].src} alt={storyTabs[copyIndex].photos[1].alt} />
           </div>
         </Reveal>
       </section>
@@ -429,7 +434,7 @@ export function HomeView() {
 
       <DishMarquee />
 
-      <VideoBlock word="The new home" />
+      <VideoBlock word="Unmatched Experience" />
 
       <section className="services" aria-label="The house">
         <div className="services-row">
@@ -441,7 +446,7 @@ export function HomeView() {
             </article>
           ))}
         </div>
-        <a className="btn-fill services-book" href={brand.booking}>Book A Seat</a>
+        <a className="btn-fill services-book" href={brand.booking} target="_blank" rel="noreferrer">Book A Seat</a>
       </section>
 
       <section className="location" id="visit">

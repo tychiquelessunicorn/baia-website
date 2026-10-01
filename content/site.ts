@@ -75,7 +75,7 @@ export const heroSlides = [
   {
     title: "The",
     outline: "Kitchen",
-    text: "We bring the sea to your plate and still offer the primest meat and poultry. And sushi, our new addition, is plate for you.",
+    text: "We bring the sea to your plate and still offer the primest meat and poultry. And sushi, our new addition, is plated for you.",
     image: "/atmosphere/hero-2.jpg?v=2",
   },
   {
@@ -91,16 +91,28 @@ export const storyTabs = [
     id: "food",
     label: "The Food",
     body: "Seafood leads, and the menu refuses to stop there. Linefish and shellfish sit beside aged beef, Cape venison, and poultry, then a sushi bar worked in the Japanese style. Several traditions, one kitchen, and a plate that is rarely the one you expected.",
+    photos: [
+      { src: "/dishes/scallops.jpg", alt: "Seared scallops" },
+      { src: "/dishes/platter.jpg", alt: "A seafood platter" },
+    ],
   },
   {
     id: "bar",
     label: "The Bar",
     body: "The list is rooted in the Cape winelands: estates poured to sit beside the food. The cocktails travel further. International classics, and house drinks written only for this room, with bubbles or a mocktail when that is the glass you want.",
+    photos: [
+      { src: "/atmosphere/bar.jpg", alt: "The bar" },
+      { src: "/atmosphere/hero-3.jpg?v=2", alt: "The wine wall" },
+    ],
   },
   {
     id: "atmosphere",
     label: "The Atmosphere",
     body: "A romantic table. A business lunch. A family gathered for the afternoon. The room is fine dining with more than one manner: quiet when the evening is yours, composed when the meeting matters, and generous when the table is full.",
+    photos: [
+      { src: "/atmosphere/corner.jpg", alt: "The dining room" },
+      { src: "/atmosphere/hero-4.jpg?v=2", alt: "The room in the evening" },
+    ],
   },
 ];
 
@@ -108,17 +120,17 @@ export const aboutNotes = [
   {
     index: "I",
     title: "The word",
-    text: "There is a Portuguese word for the bay. Baía, said Ba-hia. In 2001 Luis Viana and Daryl Mendelsohn owned it, not to describe a view, but to name a standard and legacy the house would have to keep. Every year since has been an attempt to deserve the word.",
+    text: "There is a Portuguese word for the bay. Baía, said Ba-hia. In 2001 Luis Viana and Daryl Mendelsohn used it, not to describe a view, but to name a standard and legacy the house would have to live up to. Every year since has been an attempt to deserve the word.",
   },
   {
     index: "II",
     title: "The reputation",
-    text: "The name travelled first. It spread as a landmark for fine cuisine and wine: the finest seafood of southern Africa, poultry, beef, and venison, and a cellar of rare Cape vintages. Patrick has cooked it from the beginning, from the finest ingredients, drawing on continental cuisine and Portuguese colonial tradition. Guests left speaking of an evening that would not be hurried. The room was only where it happened.",
+    text: "The name travelled first. It spread as a landmark for fine cuisine and wine: the finest seafood of southern Africa, poultry, beef, and venison, and a cellar of rare Cape vintages. Patrick Cumaio has cooked it from the beginning, from the finest ingredients, drawing on continental cuisine and Portuguese colonial tradition.",
   },
   {
     index: "III",
     title: "The rebuilding",
-    text: "The walls came last. A new house was raised so a promise already decades old would have rooms equal to it, the harbour and the water still in view. Brian came to give the cooking a new touch. The building is new. The evening people came for is not.",
+    text: "The walls came last. A new house was raised so a promise already decades old would have rooms equal to it, the harbour and the water still in view. Brian came to give the cooking a new touch. The building is new, but the reason guests came for is not.",
   },
 ];
 
@@ -134,6 +146,12 @@ export const chefs = [
     name: "Brian van Zijl",
     text: "Creator, perfectionist, and artist, he transforms each dish into an experience. His attention to detail, visual artistry, and pursuit of flavour create dishes that are as captivating to look at as they are memorable to taste.",
     image: "/chefs/brian.jpg",
+  },
+  {
+    role: "Sushi chefs",
+    name: "Sushi Chefs",
+    text: "Three chefs at one bar, the house's new chapter. Rolls, nigiri and sashimi, held to the same finish as the rest of the kitchen.",
+    image: "/atmosphere/hero-2.jpg?v=2",
   },
 ];
 
@@ -293,9 +311,8 @@ export const instagram = [
 ];
 
 export const services = [
-  { title: "Fine Dining", text: "Seafood, meat, and poultry are served together across our fine-dining menu." },
-  { title: "Halaal Friendly", text: "The kitchen is halaal friendly. Please tell us when you reserve your table." },
-  { title: "Functions", text: "Set menus for corporate or private tables. Eight or more require a deposit." },
+  { title: "Fine Dining Experience", text: "Seafood, meat, and poultry are served together across our fine-dining menu." },
+  { title: "Functions", text: "Set menus are offered for corporate or private tables. Kindly email us to find out." },
 ];
 
 export const timeline = [

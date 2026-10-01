@@ -221,11 +221,14 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 }
 .hero-copy p { max-width: 380px; margin: 44px 0 0 108px; color: var(--cream); line-height: 1.7; font-size: 16px; text-align: left; opacity: 0; }
 .hero-copy.is-spoken p { animation: heroText 1.05s ease both; }
+.hero-actions { display: flex; gap: 16px; margin: 56px 0 0 auto; }
 .hero-circle {
-  width: 118px; height: 118px; margin: 56px 8px 0 auto; border: 1px solid var(--copper);
+  width: 118px; height: 118px; margin: 0; border: 1px solid var(--copper);
   border-radius: 50%; color: var(--copper); display: grid; place-items: center;
-  text-align: center; line-height: 1.35; font-size: 15px;
+  text-align: center; line-height: 1.35; font-size: 15px; flex: none;
 }
+.hero-circle.is-gold { background: var(--copper); color: var(--deep); }
+.hero-circle.is-gold:hover { background: #c4a36e; color: var(--deep); }
 .hero-dots, .chef-dots { position: absolute; right: 22px; top: 50%; transform: translateY(-50%); display: grid; gap: 8px; z-index: 2; }
 .hero-dots button, .chef-dots button { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 1px solid var(--copper); }
 .hero-dots button.is-on, .chef-dots button.is-on { background: var(--copper); }
@@ -481,7 +484,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .video-block { position: relative; padding: 88px 0 0; overflow: hidden; }
 .video-word {
   position: relative; z-index: 1; margin: 0 0 36px; text-align: center;
-  font-size: clamp(48px, 10vw, 168px); font-style: italic; font-weight: 400; line-height: 0.85; white-space: nowrap;
+  font-size: clamp(42px, 8.2vw, 118px); font-style: italic; font-weight: 400; line-height: 0.85; white-space: nowrap;
   color: transparent; -webkit-text-stroke: 2px var(--copper); pointer-events: none;
 }
 .video-stage {
@@ -759,7 +762,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .services { padding: 56px 6vw 64px; }
 .services-book { display: flex; width: max-content; min-width: 180px; margin: 40px auto 0; }
 .services.rise, .services article.rise { opacity: 1; transform: none; transition: none; }
-.services-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.services-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
 .services article { border-top: 1px solid var(--line); padding-top: 22px; }
 .services p, .team p, .insights p { color: var(--sage); line-height: 1.6; }
 .newsletter { display: flex; justify-content: space-between; gap: 24px; align-items: center; padding: 20px 6vw 70px; }
@@ -843,7 +846,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .hero, .hero-copy { min-height: 0; }
   .hero-dots { top: calc(31vw); }
   .chef-dots { top: calc(17px + min(230px, 31vw)); }
-  .hero-circle { margin: 36px 0 0 auto; }
+  .hero-actions { margin: 36px 0 0 auto; }
 
   .booking-row { padding: 48px 24px; gap: 28px; }
   .booking-row h2, .chefs-head h2, .about-lead h2 { font-size: clamp(40px, 10vw, 52px); }
@@ -886,12 +889,12 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .dish-line i { min-width: 24px; }
 
   .video-block { padding-top: 56px; }
-  .video-word { font-size: clamp(36px, 11vw, 72px); margin-bottom: 24px; }
+  .video-word { font-size: clamp(26px, 7.2vw, 68px); margin-bottom: 24px; }
   .video-stage { height: 62vh; min-height: 320px; }
   .play-btn, .play-mark svg { width: 88px; height: 88px; }
 
   .services { padding: 36px 24px; }
-  .services-row { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .services-row { grid-template-columns: repeat(2, 1fr); gap: 18px; }
   .timeline { padding: 10px 24px 28px; gap: 28px; }
   .menu-explore { padding: 28px 24px 48px; }
   .menu-chapters button { min-height: 52px; padding: 12px 6px; font-size: 16px; }
@@ -926,6 +929,8 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .menu-chapters button { min-height: 46px; padding: 10px 1px; font-size: clamp(10px, 3.15vw, 13px); white-space: nowrap; }
   .services-row { grid-template-columns: 1fr; }
   .services-book { width: 100%; }
+  .hero-actions { width: 100%; margin-left: 0; justify-content: flex-end; }
+  .hero-circle { width: 104px; height: 104px; font-size: 14px; }
   .hero-copy h1 .hero-outline, .hero-copy p { margin-left: 0; }
   .hero-copy h1 .hero-outline { width: 100%; }
   .chef-frame { height: 380px; }

@@ -261,7 +261,7 @@ export function ContactView() {
           <p className="copper">{brand.lunch}</p>
           <p className="copper">{brand.dinner}</p>
           <h3>Contact info:</h3>
-          <p><a href={brand.maps}>{brand.address}</a></p>
+          <p><a href={brand.maps} target="_blank" rel="noreferrer">{brand.address}</a></p>
           <p><a href={brand.phoneHref}>{brand.phone}</a></p>
           <p><a href={brand.emailHref}>{brand.email}</a></p>
           <p>Fully licensed. Halaal friendly. Parties of 8 or more require a R150 per person deposit.</p>

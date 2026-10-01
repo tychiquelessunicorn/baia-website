@@ -142,7 +142,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <Diamond />
             <Link href="/#footer">Contact</Link>
             <Diamond />
-            <a href={brand.booking}>Book Now</a>
+            <a href={brand.booking} target="_blank" rel="noreferrer">Book Now</a>
           </nav>
           <button type="button" className="dot-grid" aria-label="Open panel" onClick={() => setOpen(true)}>
             {Array.from({ length: 9 }).map((_, i) => <i key={i} />)}
@@ -158,7 +158,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <Link href="/#about">About Us</Link>
           <Link href="/#chefs">Chefs</Link>
           <Link href="/#footer">Contact</Link>
-          <a href={brand.booking}>Book Now</a>
+          <a href={brand.booking} target="_blank" rel="noreferrer">Book Now</a>
         </div>
       )}
 
@@ -187,7 +187,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             aria-label="Open Shop 259, Entrance 5, V&A Waterfront, Cape Town 8001 in Google Maps"
           />
         </div>
-        <a className="btn-fill off-book" href={brand.booking}>Book Now</a>
+        <a className="btn-fill off-book" href={brand.booking} target="_blank" rel="noreferrer">Book Now</a>
       </div>
       {open && <button type="button" className="scrim" aria-label="Close panel" onClick={() => setOpen(false)} />}
 

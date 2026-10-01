@@ -144,7 +144,7 @@ export function VideoBlock({ word = "Restaurant" }: { word?: string }) {
               loop
               preload="none"
               onEnded={() => setPlaying(false)}
-              aria-label="Sushi at the Baía bar"
+              aria-label="Parties and Functions"
             />
           </div>
           <button
