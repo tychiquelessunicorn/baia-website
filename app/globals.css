@@ -253,7 +253,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   content: ""; width: 4px; height: 4px; margin: 0 16px; border-radius: 50%; background: var(--copper); flex: none;
 }
 .booking-cta {
-  min-height: 64px; padding: 0 40px; letter-spacing: 0.16em; text-transform: uppercase; font-size: 13px;
+  min-height: 64px; padding: 0 40px; letter-spacing: 0.04em; text-transform: none; font-size: 15px;
   white-space: nowrap;
 }
 .booking-row p, .story p, .dish p, .hours-row p, .about-intro p { color: var(--sage); line-height: 1.7; }
@@ -271,8 +271,13 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .story { padding: 10px 6vw 70px; background: var(--green); overflow: hidden; }
 .story-mark { display: flex; justify-content: center; padding: 18px 0 28px; }
 .story-grid { display: grid; grid-template-columns: 0.8fr 1.2fr 0.8fr; gap: 28px; align-items: center; overflow: hidden; }
-.story-photo { height: 460px; overflow: hidden; }
-.story-photo img { height: 118%; width: 100%; object-fit: cover; transform: translateY(-8%); }
+.story-photo { position: relative; height: 460px; overflow: hidden; }
+.story-photo img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 28%;
+  opacity: 0; transform: scale(1.04);
+  transition: opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1), transform 1.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.story-photo img.is-on { opacity: 1; transform: scale(1); z-index: 1; }
 .story-copy { text-align: center; }
 .story-copy h2, .loc-copy h2, .page-banner h1 { font-size: clamp(42px, 4vw, 64px); font-weight: 500; line-height: 1.15; }
 .tabs { justify-content: center; gap: 14px; margin: 22px 0; flex-wrap: wrap; }
@@ -793,7 +798,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   to { transform: none; clip-path: inset(0); opacity: 1; }
 }
 @keyframes riseIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-.ig-grid img, .about-intro img, .insights img, .video-frame img, .dish img, .story-photo img {
+.ig-grid img, .about-intro img, .insights img, .video-frame img, .dish img {
   transition: transform 0.7s ease;
 }
 .ig-grid a:hover img, .about-intro img:hover, .insights img:hover, .video-frame:hover img, .dish:hover img {
@@ -809,7 +814,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   0%, 14%, 100% { transform: scale(1); }
   5%, 9% { transform: scale(1.045); }
 }
-.story-photo:hover img { transform: translateY(-8%) scale(1.045); }
+.story-photo:hover img.is-on { transform: scale(1.03); }
 .main-nav a, .foot-bottom a, .more { transition: color 0.3s ease, letter-spacing 0.3s ease; }
 .main-nav a { position: relative; }
 .main-nav a::after {
@@ -952,6 +957,8 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .chef-frame, .chef-frame img, .chef-copy,
   .chef-show .kicker, .chef-show .chef-line, .chef-show .chef-copy > p { opacity: 1; transform: none; animation: none; }
   .menu-track { transition: none; transform: none; }
+  .story-photo img { transition: none; transform: none; }
+  .story-photo img.is-on { opacity: 1; }
   .menu-col { -webkit-mask-image: none; mask-image: none; }
   .hero-frame { transition: none; transform: none; }
   .rise { opacity: 1; transform: none; transition: none; }

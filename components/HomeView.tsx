@@ -349,7 +349,7 @@ export function HomeView() {
             <ul className="booking-facts">
               <li>Lunch 12:00–15:30</li>
               <li>Dinner 18:00–22:00</li>
-              <li>Eight or more · Deposit per person</li>
+              <li>Deposit required for eight or more.</li>
             </ul>
           </div>
           <a className="btn-fill booking-cta" href={brand.booking} target="_blank" rel="noreferrer">Book A Seat</a>
@@ -362,7 +362,15 @@ export function HomeView() {
         </div>
         <Reveal className="story-grid">
           <div className="story-photo">
-            <img key={storyTabs[copyIndex].photos[0].src} src={storyTabs[copyIndex].photos[0].src} alt={storyTabs[copyIndex].photos[0].alt} />
+            {storyTabs.map((item, index) => (
+              <img
+                key={item.id}
+                className={index === copyIndex ? "is-on" : ""}
+                src={item.photos[0].src}
+                alt={item.photos[0].alt}
+                aria-hidden={index !== copyIndex}
+              />
+            ))}
           </div>
           <div className="story-copy">
             <h2>For the appetite, and the occasion</h2>
@@ -388,7 +396,15 @@ export function HomeView() {
             <a className="btn-line" href={brand.booking} target="_blank" rel="noreferrer">◇ Find A Table ◇</a>
           </div>
           <div className="story-photo">
-            <img key={storyTabs[copyIndex].photos[1].src} src={storyTabs[copyIndex].photos[1].src} alt={storyTabs[copyIndex].photos[1].alt} />
+            {storyTabs.map((item, index) => (
+              <img
+                key={item.id}
+                className={index === copyIndex ? "is-on" : ""}
+                src={item.photos[1].src}
+                alt={item.photos[1].alt}
+                aria-hidden={index !== copyIndex}
+              />
+            ))}
           </div>
         </Reveal>
       </section>

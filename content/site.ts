@@ -148,10 +148,10 @@ export const chefs = [
     image: "/chefs/brian.jpg",
   },
   {
-    role: "Sushi chefs",
+    role: "Sushi",
     name: "Sushi Chefs",
     text: "Three chefs at one bar, the house's new chapter. Rolls, nigiri and sashimi, held to the same finish as the rest of the kitchen.",
-    image: "/atmosphere/hero-2.jpg?v=2",
+    image: "/chefs/sushi-chefs.jpg",
   },
 ];
 
