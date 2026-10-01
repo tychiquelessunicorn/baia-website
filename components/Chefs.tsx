@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { chefs } from "@/content/site";
 
-const HOLD = 6200;
+const HOLD = 12400;
 const PASS = 1500;
 const TYPE_START = 520;
 const TYPE_LETTER = 88;
@@ -39,6 +39,14 @@ export function Chefs() {
     return () => observer.disconnect();
   }, []);
 
+  const show = (next: number) => {
+    if (next === indexRef.current) return;
+    setLeaving(indexRef.current);
+    indexRef.current = next;
+    setIndex(next);
+    setEpoch((n) => n + 1);
+  };
+
   useEffect(() => {
     if (!motion || !seen) return;
     let alive = true;
@@ -48,13 +56,7 @@ export function Chefs() {
     };
 
     later(PASS, () => setLeaving(null));
-    later(HOLD, () => {
-      const next = (indexRef.current + 1) % chefs.length;
-      setLeaving(indexRef.current);
-      indexRef.current = next;
-      setIndex(next);
-      setEpoch((n) => n + 1);
-    });
+    later(HOLD, () => show((indexRef.current + 1) % chefs.length));
 
     return () => {
       alive = false;
@@ -79,6 +81,17 @@ export function Chefs() {
         <div className="chef-stage">
           {leaving !== null && <ChefPane chef={chefs[leaving]} mode="out" typing={false} />}
           <ChefPane key={epoch} chef={chefs[index]} mode="in" typing={seen && motion} />
+        </div>
+        <div className="chef-dots" role="tablist" aria-label="Chefs">
+          {chefs.map((chef, chefIndex) => (
+            <button
+              key={chef.name}
+              type="button"
+              className={chefIndex === index ? "is-on" : ""}
+              aria-label={chef.name}
+              onClick={() => show(chefIndex)}
+            />
+          ))}
         </div>
       </div>
     </section>

@@ -153,7 +153,7 @@ export function HomeView() {
       slideRef.current = next;
       setFading(true);
       setSlide(next);
-    }, 6800);
+    }, 13600);
     return () => window.clearInterval(timer);
   }, []);
 
