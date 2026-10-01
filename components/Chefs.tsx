@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { chefs } from "@/content/site";
 
 const HOLD = 12400;
@@ -17,6 +17,10 @@ export function Chefs() {
   const [seen, setSeen] = useState(false);
   const indexRef = useRef(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const remainingRef = useRef(HOLD);
+  const startedRef = useRef(0);
+  const timerRef = useRef(0);
+  const pausedRef = useRef(false);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -47,22 +51,45 @@ export function Chefs() {
     setEpoch((n) => n + 1);
   };
 
+  const startChefTimer = (ms: number) => {
+    window.clearTimeout(timerRef.current);
+    remainingRef.current = ms;
+    startedRef.current = performance.now();
+    timerRef.current = window.setTimeout(() => {
+      show((indexRef.current + 1) % chefs.length);
+    }, ms);
+  };
+
   useEffect(() => {
     if (!motion || !seen) return;
-    let alive = true;
-    const queue: number[] = [];
-    const later = (ms: number, fn: () => void) => {
-      queue.push(window.setTimeout(() => { if (alive) fn(); }, ms));
-    };
-
-    later(PASS, () => setLeaving(null));
-    later(HOLD, () => show((indexRef.current + 1) % chefs.length));
-
+    const passTimer = window.setTimeout(() => setLeaving(null), PASS);
+    if (pausedRef.current) remainingRef.current = HOLD;
+    else startChefTimer(HOLD);
     return () => {
-      alive = false;
-      queue.forEach((id) => window.clearTimeout(id));
+      window.clearTimeout(passTimer);
+      window.clearTimeout(timerRef.current);
     };
   }, [epoch, motion, seen]);
+
+  const pauseChefs = (event: PointerEvent<HTMLDivElement>) => {
+    if (pausedRef.current) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    pausedRef.current = true;
+    event.currentTarget.closest(".chefs")?.classList.add("is-paused");
+    if (!timerRef.current) return;
+    const elapsed = performance.now() - startedRef.current;
+    remainingRef.current = Math.max(0, remainingRef.current - elapsed);
+    window.clearTimeout(timerRef.current);
+    timerRef.current = 0;
+  };
+
+  const resumeChefs = (event: PointerEvent<HTMLDivElement>) => {
+    if (!pausedRef.current) return;
+    pausedRef.current = false;
+    event.currentTarget.closest(".chefs")?.classList.remove("is-paused");
+    if (!motion || !seen) return;
+    startChefTimer(remainingRef.current);
+  };
 
   return (
     <section className="chefs" id="chefs" aria-label="The chefs" ref={sectionRef}>
@@ -82,7 +109,13 @@ export function Chefs() {
           {leaving !== null && <ChefPane chef={chefs[leaving]} mode="out" typing={false} />}
           <ChefPane key={epoch} chef={chefs[index]} mode="in" typing={seen && motion} />
         </div>
-        <div className="chef-dots" role="tablist" aria-label="Chefs">
+        <div
+          className="chef-dots"
+          role="tablist"
+          aria-label="Chefs"
+          onPointerEnter={pauseChefs}
+          onPointerLeave={resumeChefs}
+        >
           {chefs.map((chef, chefIndex) => (
             <button
               key={chef.name}

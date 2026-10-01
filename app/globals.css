@@ -203,7 +203,23 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   -webkit-text-stroke: 0; animation: chefBlink 0.7s steps(1) infinite;
 }
 .hero-caret.is-copper { background: var(--copper); }
-.hero-copy p { max-width: 380px; margin: 26px 0 0 108px; color: var(--cream); line-height: 1.7; font-size: 16px; text-align: left; opacity: 0; }
+.hero-meter {
+  position: absolute; left: 0; top: calc(100% + 28px);
+  width: var(--hero-word, 0px); max-width: 100%; height: 1px;
+  background: var(--line); overflow: hidden; pointer-events: none;
+}
+.hero-meter > span {
+  display: block; height: 100%; background: var(--copper);
+  transform: scaleX(0); transform-origin: left center;
+  animation: heroMeter linear both;
+}
+@keyframes heroMeter { to { transform: scaleX(1); } }
+.hero.is-paused .hero-meter > span,
+.chefs.is-paused .chef-show.is-live .chef-layer.is-in .chef-line span,
+.chefs.is-paused .chef-show.is-live .chef-layer.is-in .chef-frame img {
+  animation-play-state: paused;
+}
+.hero-copy p { max-width: 380px; margin: 44px 0 0 108px; color: var(--cream); line-height: 1.7; font-size: 16px; text-align: left; opacity: 0; }
 .hero-copy.is-spoken p { animation: heroText 1.05s ease both; }
 .hero-circle {
   width: 118px; height: 118px; margin: 56px 8px 0 auto; border: 1px solid var(--copper);
@@ -918,7 +934,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track, .motto p, .loader img.logo, .floral, .hero-copy h1, .hero-copy p, .hero-circle, .hero-photo, .hero-frame, .hero-caret, .sponsors ul, .quotes blockquote, .menu-modal, .menu-modal-card, .chef-frame, .chef-frame img, .chef-copy, .chef-line span, .chef-caret, .story-body p, .story-copy .tabs button.is-on::after, .about-spread article, .about-spread h3::after, .about-line > span, .about .kicker, .about-deck, .about-mark, .about::before, .video-cinema, .video-stage::after, .video-drift video, .play-btn, .play-triangle, .ig-grid img { animation: none; }
+  .marquee-track, .motto p, .loader img.logo, .floral, .hero-copy h1, .hero-copy p, .hero-circle, .hero-photo, .hero-frame, .hero-caret, .hero-meter > span, .sponsors ul, .quotes blockquote, .menu-modal, .menu-modal-card, .chef-frame, .chef-frame img, .chef-copy, .chef-line span, .chef-caret, .story-body p, .story-copy .tabs button.is-on::after, .about-spread article, .about-spread h3::after, .about-line > span, .about .kicker, .about-deck, .about-mark, .about::before, .video-cinema, .video-stage::after, .video-drift video, .play-btn, .play-triangle, .ig-grid img { animation: none; }
   .video-cinema { clip-path: none; }
   .video-stage::after { opacity: 0; }
   .video-drift video { transform: none; }

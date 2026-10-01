@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import {
   brand,
   heroSlides,
@@ -20,6 +20,7 @@ import { Diamond, Floral } from "./icons";
 const TYPE_LETTER = 150;
 const TYPE_GAP = 440;
 const TYPE_START = 200;
+const HERO_HOLD = 13600;
 
 function HeroTitle({ title, outline }: { title: string; outline: string }) {
   const outlineRef = useRef<HTMLSpanElement>(null);
@@ -37,12 +38,14 @@ function HeroTitle({ title, outline }: { title: string; outline: string }) {
       const copy = el.closest(".hero-copy");
       if (!(ghost instanceof HTMLElement) || !copy) return;
       el.style.fontSize = "";
-      const ghostBox = ghost.getBoundingClientRect();
+      let ghostBox = ghost.getBoundingClientRect();
       const limit = copy.getBoundingClientRect().right - 16;
       if (ghostBox.width > 0 && ghostBox.right > limit) {
         const size = parseFloat(getComputedStyle(el).fontSize);
         el.style.fontSize = `${size * ((limit - ghostBox.left) / ghostBox.width)}px`;
+        ghostBox = ghost.getBoundingClientRect();
       }
+      el.style.setProperty("--hero-word", `${ghostBox.width}px`);
     };
     fit();
     document.fonts?.ready.then(fit);
@@ -125,6 +128,9 @@ function HeroTitle({ title, outline }: { title: string; outline: string }) {
           {outline.slice(0, outlineCount)}
           {caret === "outline" && <i className="hero-caret is-copper" />}
         </span>
+        <span className="hero-meter" aria-hidden="true">
+          <span style={{ animationDuration: `${HERO_HOLD}ms` }} />
+        </span>
       </span>
     </h1>
   );
@@ -144,18 +150,52 @@ export function HomeView() {
   const pendingRef = useRef(0);
   const storyReady = useRef(false);
   const [quote, setQuote] = useState(0);
+  const remainingRef = useRef(HERO_HOLD);
+  const startedRef = useRef(0);
+  const timerRef = useRef(0);
+  const pausedRef = useRef(false);
 
-  useEffect(() => {
-    const timer = window.setInterval(() => {
+  const startHeroTimer = (ms: number) => {
+    window.clearTimeout(timerRef.current);
+    remainingRef.current = ms;
+    startedRef.current = performance.now();
+    timerRef.current = window.setTimeout(() => {
       const current = slideRef.current;
       const next = (current + 1) % heroSlides.length;
       setLeaving(current);
       slideRef.current = next;
       setFading(true);
       setSlide(next);
-    }, 13600);
-    return () => window.clearInterval(timer);
-  }, []);
+    }, ms);
+  };
+
+  useEffect(() => {
+    if (pausedRef.current) {
+      remainingRef.current = HERO_HOLD;
+      return;
+    }
+    startHeroTimer(HERO_HOLD);
+    return () => window.clearTimeout(timerRef.current);
+  }, [slide]);
+
+  const pauseHero = (event: PointerEvent<HTMLDivElement>) => {
+    if (pausedRef.current) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    pausedRef.current = true;
+    event.currentTarget.closest(".hero")?.classList.add("is-paused");
+    if (!timerRef.current) return;
+    const elapsed = performance.now() - startedRef.current;
+    remainingRef.current = Math.max(0, remainingRef.current - elapsed);
+    window.clearTimeout(timerRef.current);
+    timerRef.current = 0;
+  };
+
+  const resumeHero = (event: PointerEvent<HTMLDivElement>) => {
+    if (!pausedRef.current) return;
+    pausedRef.current = false;
+    event.currentTarget.closest(".hero")?.classList.remove("is-paused");
+    startHeroTimer(remainingRef.current);
+  };
 
   useEffect(() => {
     if (leaving === null) return;
@@ -270,7 +310,13 @@ export function HomeView() {
             Our<br />Menus
           </Link>
         </div>
-        <div className="hero-dots" role="tablist" aria-label="Hero slides">
+        <div
+          className="hero-dots"
+          role="tablist"
+          aria-label="Hero slides"
+          onPointerEnter={pauseHero}
+          onPointerLeave={resumeHero}
+        >
           {heroSlides.map((item, index) => (
             <button
               key={item.image}
