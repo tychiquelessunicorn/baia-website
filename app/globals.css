@@ -833,12 +833,14 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .nav-logo, .site-header.is-stuck .nav-logo { display: grid; left: 20px; }
   .nav-logo img.logo { width: 132px; max-width: 132px; }
   .burger {
-    display: block; position: absolute; right: 20px; top: 50%;
-    transform: translateY(-50%); z-index: 2;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px;
+    position: absolute; right: 12px; top: 50%;
+    width: 44px; height: 44px; transform: translateY(-50%); z-index: 2;
   }
+  .burger span { width: 22px; margin: 0; }
   .main-nav, .dot-grid, .site-header.is-stuck .dot-grid { display: none; }
   .mobile-nav { padding: 24px 24px 40px; overflow: auto; }
-  .mobile-nav a { font-size: clamp(28px, 8vw, 36px); }
+  .mobile-nav a { font-size: clamp(28px, 8vw, 36px); min-height: 48px; display: flex; align-items: center; }
 
   .hero, .story-grid, .loc-top, .instagram, .about-intro, .contact-grid, .menu-cols, .foot-grid, .services-row, .team, .insights, .timeline, .newsletter, .booking-row {
     grid-template-columns: 1fr;
@@ -849,12 +851,23 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .hero-copy h1 .hero-outline { margin-left: 28px; width: calc(100% - 28px); }
   .hero-copy p { margin-left: 28px; max-width: 460px; }
   .hero, .hero-copy { min-height: 0; }
-  .hero-dots { top: calc(31vw); }
+  .hero-dots, .chef-dots { gap: 2px; }
+  .hero-dots { right: 6px; top: calc(31vw); }
+  .chef-dots { right: 6px; }
+  .hero-dots button, .chef-dots button {
+    width: 22px; height: 22px; border: 0; background: transparent; position: relative;
+  }
+  .hero-dots button::after, .chef-dots button::after {
+    content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px;
+    border: 1px solid var(--copper); border-radius: 50%; transform: translate(-50%, -50%);
+  }
+  .hero-dots button.is-on, .chef-dots button.is-on { background: transparent; }
+  .hero-dots button.is-on::after, .chef-dots button.is-on::after { background: var(--copper); }
   .chef-dots { top: calc(17px + min(230px, 31vw)); }
   .hero-actions { margin: 36px 0 0 auto; }
 
   .booking-row { padding: 48px 24px; gap: 28px; }
-  .booking-row h2, .chefs-head h2, .about-lead h2 { font-size: clamp(40px, 10vw, 52px); }
+  .booking-row h2, .chefs-head h2, .about-lead h2 { font-size: clamp(31px, 9.4vw, 52px); }
   .booking-copy > p { font-size: 16px; }
   .booking-facts { flex-direction: column; align-items: flex-start; gap: 10px; letter-spacing: 0.04em; }
   .booking-facts li + li::before { display: none; }
@@ -882,7 +895,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .chef-frame { width: min(100%, 480px); height: min(460px, 62vw); }
 
   .quotes { padding: 64px 24px 80px; }
-  .quotes-title { font-size: clamp(36px, 9vw, 48px); }
+  .quotes-title { font-size: clamp(32px, 8.6vw, 48px); }
   .quotes blockquote { font-size: 20px; }
   .frame { display: none; }
 
