@@ -356,7 +356,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   content: ""; display: block; width: 64px; height: 1px; margin: 16px 0 18px;
   background: var(--copper); transform: scaleX(0); transform-origin: left center;
 }
-.about-spread p { margin: 0; max-width: 58ch; color: var(--sage); font-size: 18px; line-height: 1.75; }
+.about-spread p { margin: 0; max-width: none; color: var(--sage); font-size: 18px; line-height: 1.75; }
 .about-spread p + p { margin-top: 1em; }
 .about.rise.is-in::before { animation: aboutRule 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .about.rise.is-in .kicker { animation: aboutArrive 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards; }
