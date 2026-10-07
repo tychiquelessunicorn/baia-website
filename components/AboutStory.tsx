@@ -11,10 +11,25 @@ export function AboutStory() {
     if (!node) return;
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const marks = [...node.querySelectorAll<HTMLElement>(".about-mark")];
+    const pieces = [...node.querySelectorAll<HTMLElement>(".about-prose, .about-spread article, .about-close")];
     let frame = 0;
+
+    const revealPieces = () => {
+      if (media.matches) {
+        pieces.forEach((piece) => piece.classList.add("is-shown"));
+        return;
+      }
+      const limit = window.innerHeight * 0.9;
+      pieces.forEach((piece) => {
+        if (piece.classList.contains("is-shown")) return;
+        const box = piece.getBoundingClientRect();
+        if (box.top < limit) piece.classList.add("is-shown");
+      });
+    };
 
     const update = () => {
       frame = 0;
+      revealPieces();
       if (media.matches) {
         marks.forEach((mark) => { mark.style.transform = ""; });
         return;
@@ -38,14 +53,15 @@ export function AboutStory() {
     };
 
     update();
+    const onMotion = () => onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-    media.addEventListener("change", onScroll);
+    media.addEventListener("change", onMotion);
     return () => {
       window.cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      media.removeEventListener("change", onScroll);
+      media.removeEventListener("change", onMotion);
     };
   }, []);
 

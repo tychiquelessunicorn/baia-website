@@ -329,7 +329,10 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .about-line { display: block; overflow: hidden; padding-bottom: 0.16em; }
 .about-line > span { display: block; white-space: nowrap; opacity: 0; transform: translateY(120%); }
 .about-prose { padding: 8px 8vw 8px; }
-.about-prose p { margin: 0 0 1em; max-width: none; color: var(--sage); font-size: 18px; line-height: 1.75; }
+.about-prose p {
+  margin: 0 0 1em; max-width: none; color: var(--sage); font-size: 18px; line-height: 1.75;
+  opacity: 0; transform: translateY(18px);
+}
 .about-prose p:last-child { margin-bottom: 0; }
 .about-close { padding: 42px 8vw 8px; }
 .about-close h3 { margin: 0; font-family: var(--font-serif); font-size: 32px; font-weight: 400; }
@@ -337,6 +340,8 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   content: ""; display: block; width: 64px; height: 1px; margin: 16px 0 18px;
   background: var(--copper); transform: scaleX(0); transform-origin: left center;
 }
+.about-close h3, .about-close p { opacity: 0; transform: translateY(18px); }
+.about-close .booking-cta { opacity: 0; }
 .about-close p { margin: 0; max-width: none; color: var(--sage); font-size: 18px; line-height: 1.75; }
 .about-close p + p { margin-top: 1em; }
 .about-close .booking-cta { margin-top: 28px; }
@@ -344,7 +349,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .about-spread article {
   display: grid; grid-template-columns: 148px minmax(0, 1fr);
   gap: 28px; align-items: start; padding: 34px 0 38px;
-  border-bottom: 1px solid var(--line); opacity: 0;
+  border-bottom: 1px solid var(--line);
 }
 .about-spread article:last-child { border-bottom: 0; padding-bottom: 8px; }
 .about-spread span {
@@ -356,38 +361,34 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   content: ""; display: block; width: 64px; height: 1px; margin: 16px 0 18px;
   background: var(--copper); transform: scaleX(0); transform-origin: left center;
 }
+.about-spread .about-copy { opacity: 0; transform: translateY(22px); }
 .about-spread p { margin: 0; max-width: none; color: var(--sage); font-size: 18px; line-height: 1.75; }
 .about-spread p + p { margin-top: 1em; }
-.about.rise.is-in::before { animation: aboutRule 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.about.rise.is-in .kicker { animation: aboutArrive 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards; }
-.about.rise.is-in .about-line > span { animation: aboutLine 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.16s forwards; }
-.about-prose { opacity: 0; transform: translateY(28px); }
-.about.rise.is-in .about-prose { animation: aboutArrive 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
-.about-close { opacity: 0; transform: translateY(28px); }
-.about.rise.is-in .about-close { animation: aboutArrive 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards; }
-.about.rise.is-in .about-close h3::after { animation: aboutRule 0.85s cubic-bezier(0.16, 1, 0.3, 1) 1.7s forwards; }
-.about.rise.is-in .about-spread article { animation: aboutArrive 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards; }
-.about.rise.is-in .about-spread article:nth-child(2) { animation-delay: 1.28s; }
-.about.rise.is-in .about-spread article:nth-child(3) { animation-delay: 1.61s; }
-.about.rise.is-in .about-spread article:nth-child(4) { animation-delay: 1.94s; }
-.about.rise.is-in .about-mark { animation: aboutMark 0.85s ease forwards; }
-.about.rise.is-in .about-spread article:nth-child(1) .about-mark { animation-delay: 1.05s; }
-.about.rise.is-in .about-spread article:nth-child(2) .about-mark { animation-delay: 1.38s; }
-.about.rise.is-in .about-spread article:nth-child(3) .about-mark { animation-delay: 1.71s; }
-.about.rise.is-in .about-spread article:nth-child(4) .about-mark { animation-delay: 2.04s; }
-.about.rise.is-in .about-spread h3::after { animation: aboutRule 0.85s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards; }
-.about.rise.is-in .about-spread article:nth-child(2) h3::after { animation-delay: 1.53s; }
-.about.rise.is-in .about-spread article:nth-child(3) h3::after { animation-delay: 1.86s; }
-.about.rise.is-in .about-spread article:nth-child(4) h3::after { animation-delay: 2.19s; }
+.about.rise.is-in::before { animation: aboutRule 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.about.rise.is-in .kicker { animation: aboutArrive 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards; }
+.about.rise.is-in .about-line > span { animation: aboutLine 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.18s forwards; }
+.about-prose.is-shown p { animation: aboutArrive 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.about-prose.is-shown p:nth-child(2) { animation-delay: 0.14s; }
+.about-prose.is-shown p:nth-child(3) { animation-delay: 0.28s; }
+.about-prose.is-shown p:nth-child(4) { animation-delay: 0.42s; }
+.about-spread article.is-shown .about-mark { animation: aboutMark 0.9s ease forwards; }
+.about-spread article.is-shown .about-copy { animation: aboutArrive 1s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards; }
+.about-spread article.is-shown h3::after { animation: aboutRule 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s forwards; }
+.about-close.is-shown h3 { animation: aboutArrive 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.about-close.is-shown h3::after { animation: aboutRule 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.16s forwards; }
+.about-close.is-shown p { animation: aboutArrive 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; }
+.about-close.is-shown p + p { animation-delay: 0.34s; }
+.about-close.is-shown .booking-cta { animation: aboutFade 0.8s ease 0.46s forwards; }
 @keyframes aboutLine {
   from { opacity: 0; transform: translateY(120%); }
   to { opacity: 1; transform: none; }
 }
 @keyframes aboutMark { to { opacity: 1; } }
 @keyframes aboutArrive {
-  from { opacity: 0; transform: translateY(36px); }
+  from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
 }
+@keyframes aboutFade { to { opacity: 1; } }
 @keyframes aboutRule { to { transform: scaleX(1); } }
 
 .chefs { background: var(--green); }
@@ -997,13 +998,13 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track, .motto p, .loader img.logo, .floral, .hero-copy h1, .hero-copy p, .hero-circle, .hero-photo, .hero-frame, .hero-caret, .hero-meter > span, .sponsors ul, .quotes blockquote, .menu-modal, .menu-modal-card, .chef-frame, .chef-frame img, .chef-copy, .chef-line span, .chef-caret, .story-body p, .story-copy .tabs button.is-on::after, .about-spread article, .about-spread h3::after, .about-line > span, .about .kicker, .about-prose, .about-close, .about-close h3::after, .about-mark, .about::before, .video-cinema, .video-stage::after, .video-drift video, .play-btn, .play-triangle, .play-mark svg, .ig-grid img { animation: none; }
+  .marquee-track, .motto p, .loader img.logo, .floral, .hero-copy h1, .hero-copy p, .hero-circle, .hero-photo, .hero-frame, .hero-caret, .hero-meter > span, .sponsors ul, .quotes blockquote, .menu-modal, .menu-modal-card, .chef-frame, .chef-frame img, .chef-copy, .chef-line span, .chef-caret, .story-body p, .story-copy .tabs button.is-on::after, .about-spread article, .about-spread h3::after, .about-line > span, .about .kicker, .about-prose, .about-prose p, .about-copy, .about-close, .about-close h3, .about-close p, .about-close .booking-cta, .about-close h3::after, .about-mark, .about::before, .video-cinema, .video-stage::after, .video-drift video, .play-btn, .play-triangle, .play-mark svg, .ig-grid img { animation: none; }
   .video-cinema { clip-path: none; }
   .video-stage::after { opacity: 0; }
   .video-drift video { transform: none; }
   .play-btn { opacity: 1; }
   .play-btn.is-hidden { opacity: 0; }
-  .story-body p, .hero-copy p, .about-spread article, .about .kicker, .about-prose, .about-close, .about-mark { opacity: 1; transform: none; }
+  .story-body p, .hero-copy p, .about-spread article, .about .kicker, .about-prose, .about-prose p, .about-close, .about-close h3, .about-close p, .about-close .booking-cta, .about-mark { opacity: 1; transform: none; }
   .about-line > span, .about-copy { opacity: 1; transform: none; }
   .about-spread h3::after, .about-close h3::after, .about::before { transform: scaleX(1); }
   .about-mark, .about-copy { transform: none; }
