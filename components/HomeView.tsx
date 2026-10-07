@@ -21,6 +21,7 @@ const TYPE_LETTER = 150;
 const TYPE_GAP = 440;
 const TYPE_START = 200;
 const HERO_HOLD = 9520;
+const STORY_HOLD = 7280;
 
 function HeroTitle({ title, outline }: { title: string; outline: string }) {
   const outlineRef = useRef<HTMLSpanElement>(null);
@@ -154,6 +155,10 @@ export function HomeView() {
   const startedRef = useRef(0);
   const timerRef = useRef(0);
   const pausedRef = useRef(false);
+  const storyRemainingRef = useRef(STORY_HOLD);
+  const storyStartedRef = useRef(0);
+  const storyTimerRef = useRef(0);
+  const storyPausedRef = useRef(false);
 
   const startHeroTimer = (ms: number) => {
     window.clearTimeout(timerRef.current);
@@ -230,18 +235,50 @@ export function HomeView() {
     return () => window.clearTimeout(timer);
   }, [swap]);
 
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => {
+  const startStoryTimer = (ms: number) => {
+    window.clearTimeout(storyTimerRef.current);
+    storyRemainingRef.current = ms;
+    storyStartedRef.current = performance.now();
+    storyTimerRef.current = window.setTimeout(() => {
+      storyTimerRef.current = 0;
       const next = (tabRef.current + 1) % storyTabs.length;
       tabRef.current = next;
       pendingRef.current = next;
       setTab(storyTabs[next].id);
       setPhase("out");
       setSwap((n) => n + 1);
-    }, 5600);
-    return () => window.clearInterval(timer);
-  }, [storyEpoch]);
+    }, ms);
+  };
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (storyPausedRef.current) {
+      storyRemainingRef.current = STORY_HOLD;
+      return;
+    }
+    startStoryTimer(STORY_HOLD);
+    return () => window.clearTimeout(storyTimerRef.current);
+  }, [storyEpoch, tab]);
+
+  const pauseStory = (event: PointerEvent<HTMLDivElement>) => {
+    if (storyPausedRef.current) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    storyPausedRef.current = true;
+    event.currentTarget.closest(".story")?.classList.add("is-paused");
+    if (!storyTimerRef.current) return;
+    const elapsed = performance.now() - storyStartedRef.current;
+    storyRemainingRef.current = Math.max(0, storyRemainingRef.current - elapsed);
+    window.clearTimeout(storyTimerRef.current);
+    storyTimerRef.current = 0;
+  };
+
+  const resumeStory = (event: PointerEvent<HTMLDivElement>) => {
+    if (!storyPausedRef.current) return;
+    storyPausedRef.current = false;
+    event.currentTarget.closest(".story")?.classList.remove("is-paused");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    startStoryTimer(storyRemainingRef.current);
+  };
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -356,7 +393,7 @@ export function HomeView() {
         </div>
       </section>
 
-      <section className="story" id="story">
+      <section className="story" id="story" style={{ ["--story-hold" as string]: `${STORY_HOLD}ms` }}>
         <div className="story-mark">
           <Floral />
         </div>
@@ -374,7 +411,7 @@ export function HomeView() {
           </div>
           <div className="story-copy">
             <h2>For the appetite, and the occasion</h2>
-            <div className="tabs">
+            <div className="tabs" onPointerEnter={pauseStory} onPointerLeave={resumeStory}>
               {storyTabs.map((item, index) => (
                 <span key={item.id}>
                   {index > 0 && <Diamond />}

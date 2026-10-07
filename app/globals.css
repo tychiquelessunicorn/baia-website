@@ -290,8 +290,9 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .story-copy .tabs button.is-on::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 1px;
   background: var(--copper); transform: scaleX(0); transform-origin: left center;
-  animation: storyMeter 5.6s linear both;
+  animation: storyMeter var(--story-hold, 7.28s) linear both;
 }
+.story.is-paused .story-copy .tabs button.is-on::after { animation-play-state: paused; }
 @keyframes storyMeter { to { transform: scaleX(1); } }
 .story-body { min-height: 9.6em; }
 .story-body p { margin: 0; }
