@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { chefs } from "@/content/site";
 
-const HOLD = 12400;
-const PASS = 1500;
+const HOLD = 8680;
+const PASS = 1050;
 const TYPE_START = 520;
 const TYPE_LETTER = 88;
 const TYPE_SPACE = 160;

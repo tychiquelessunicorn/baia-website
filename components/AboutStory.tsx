@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { aboutNotes } from "@/content/site";
+import { aboutNotes, brand } from "@/content/site";
 
 export function AboutStory() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -52,15 +52,16 @@ export function AboutStory() {
   return (
     <section className="about" id="about" aria-label="About us" ref={sectionRef}>
       <div className="about-lead">
-        <div>
-          <p className="kicker">About us</p>
-          <h2>
-            <span className="about-line"><span>A name,</span></span>
-            <span className="about-line"><span>then a reputation,</span></span>
-            <span className="about-line"><span>then a house.</span></span>
-          </h2>
-        </div>
-        <p className="about-deck">Luis Viana and Daryl Mendelsohn opened the house in 2001. Patrick Cumaio set its cooking. Brian van Zijl has come to give it a new touch.</p>
+        <p className="kicker">About us</p>
+        <h2>
+          <span className="about-line"><span>BAIA — A CULINARY JOURNEY BY THE SEA</span></span>
+        </h2>
+      </div>
+      <div className="about-prose">
+        <p>Since its inception in 2001, Baia Seafood Restaurant has evolved into a world-class fine dining destination, celebrated for exceptional seafood, innovative flavours, and a distinctive fusion of culinary influences.</p>
+        <p>At the heart of Baia’s enduring story are two remarkable chefs. Chef Patrick Cumaio, Baia’s original chef, hailing from Mozambique, continues to bring his passion, flair, and deep connection to seafood to every plate. His culinary artistry has helped establish the reputation for which Baia is renowned both locally and internationally.</p>
+        <p>Alongside him, Chef Brian van Zijl — creator, perfectionist, and artist — transforms each dish into an experience. His attention to detail, visual artistry, and pursuit of flavour create dishes that are as captivating to look at as they are memorable to taste.</p>
+        <p>Together, Patrick and Brian form a team dedicated to culinary excellence, creativity, and perfection.</p>
       </div>
       <div className="about-spread">
         {aboutNotes.map((note) => (
@@ -68,10 +69,18 @@ export function AboutStory() {
             <span className="about-mark" aria-hidden="true">{note.index}</span>
             <div className="about-copy">
               <h3>{note.title}</h3>
-              <p>{note.text}</p>
+              {note.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
           </article>
         ))}
+      </div>
+      <div className="about-close">
+        <h3>COME DINE WITH US</h3>
+        <p>Whether joining us for lunch or dinner, Baia is more than a meal — it is an experience, an adventure, and a celebration of exceptional food, remarkable views, and the art of hospitality.</p>
+        <p>Come and experience Baia.</p>
+        <a className="btn-fill booking-cta" href={brand.booking} target="_blank" rel="noreferrer">Book A Seat</a>
       </div>
     </section>
   );

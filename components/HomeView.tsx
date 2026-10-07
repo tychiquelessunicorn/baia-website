@@ -20,7 +20,7 @@ import { Diamond, Floral } from "./icons";
 const TYPE_LETTER = 150;
 const TYPE_GAP = 440;
 const TYPE_START = 200;
-const HERO_HOLD = 13600;
+const HERO_HOLD = 9520;
 
 function HeroTitle({ title, outline }: { title: string; outline: string }) {
   const outlineRef = useRef<HTMLSpanElement>(null);
@@ -199,7 +199,7 @@ export function HomeView() {
 
   useEffect(() => {
     if (leaving === null) return;
-    const timer = window.setTimeout(() => setLeaving(null), 1900);
+    const timer = window.setTimeout(() => setLeaving(null), 1330);
     return () => window.clearTimeout(timer);
   }, [leaving]);
 

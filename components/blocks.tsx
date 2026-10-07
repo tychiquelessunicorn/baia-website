@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { PlayMark } from "./icons";
 
 export function Reveal({
@@ -72,106 +72,15 @@ export function DishMarquee() {
 }
 
 export function VideoBlock({ word = "Restaurant" }: { word?: string }) {
-  const film = useRef<HTMLVideoElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const [open, setOpen] = useState(false);
-  const [seen, setSeen] = useState(false);
-  const [playing, setPlaying] = useState(false);
-
-  const play = () => {
-    const node = film.current;
-    if (!node) return;
-    void node.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
-  };
-
-  const pause = () => {
-    film.current?.pause();
-    setPlaying(false);
-  };
-
-  const openFilm = () => {
-    setSeen(true);
-    setOpen(true);
-    play();
-  };
-
-  const closeFilm = () => {
-    pause();
-    setOpen(false);
-  };
-
-  useEffect(() => {
-    if (!open) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    closeRef.current?.focus();
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeFilm();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = previous;
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
-  const onStageClick = () => {
-    if (!open) {
-      openFilm();
-      return;
-    }
-    if (film.current?.paused) play();
-    else pause();
-  };
-
   return (
-    <section className={`video-block${open ? " is-cinema" : ""}${seen ? " was-cinema" : ""}`}>
+    <section className="video-block">
       <h2 className="video-word">{word}</h2>
       <div className="video-stage">
-        <div
-          className="video-cinema"
-          onClick={onStageClick}
-          role={open ? "dialog" : undefined}
-          aria-modal={open || undefined}
-          aria-label={open ? word : undefined}
-        >
-          <div className="video-drift">
-            <video
-              ref={film}
-              src="/video/sushi-reel.mp4"
-              poster="/video/sushi-poster.jpg"
-              playsInline
-              loop
-              preload="none"
-              onEnded={() => setPlaying(false)}
-              aria-label="Parties and Functions"
-            />
-          </div>
-          <button
-            type="button"
-            className={`play-btn ${playing ? "is-hidden" : ""}`}
-            onClick={(event) => {
-              event.stopPropagation();
-              onStageClick();
-            }}
-            aria-label={playing ? "Pause the film" : "Play the film"}
-          >
+        <div className="video-cinema is-still" aria-hidden="true">
+          <img className="video-logo" src="/brand/baia-logo.png?v=4" alt="" />
+          <div className="play-btn">
             <PlayMark />
-          </button>
-          {open ? (
-            <button
-              ref={closeRef}
-              type="button"
-              className="video-cinema-close"
-              aria-label="Close the film"
-              onClick={(event) => {
-                event.stopPropagation();
-                closeFilm();
-              }}
-            >
-              Close
-            </button>
-          ) : null}
+          </div>
         </div>
       </div>
     </section>

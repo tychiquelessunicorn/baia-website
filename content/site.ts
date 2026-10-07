@@ -64,7 +64,7 @@ export const heroSlides = [
     title: "The",
     outline: "Occasion",
     text: "Romance. Family. Business. A party. Or even a private function. Name the occasion. Baía is perfectly dressed for you.",
-    image: "/atmosphere/hero-5.jpg?v=2",
+    image: "/atmosphere/occasion.jpg",
   },
   {
     title: "The",
@@ -92,8 +92,8 @@ export const storyTabs = [
     label: "The Food",
     body: "Seafood leads, and the menu refuses to stop there. Linefish and shellfish sit beside aged beef, Cape venison, and poultry, then a sushi bar worked in the Japanese style. Several traditions, one kitchen, and a plate that is rarely the one you expected.",
     photos: [
-      { src: "/dishes/scallops.jpg", alt: "Seared scallops" },
-      { src: "/dishes/platter.jpg", alt: "A seafood platter" },
+      { src: "/dishes/sushi-service.png", alt: "Sushi and sashimi" },
+      { src: "/dishes/prawn-plate.jpg", alt: "Prawns with rice and chips" },
     ],
   },
   {
@@ -101,7 +101,7 @@ export const storyTabs = [
     label: "The Bar",
     body: "The list is rooted in the Cape winelands: estates poured to sit beside the food. The cocktails travel further. International classics, and house drinks written only for this room, with bubbles or a mocktail when that is the glass you want.",
     photos: [
-      { src: "/atmosphere/bar.jpg", alt: "The bar" },
+      { src: "/atmosphere/dining-floor.jpg", alt: "The dining room" },
       { src: "/atmosphere/hero-3.jpg?v=2", alt: "The wine wall" },
     ],
   },
@@ -110,8 +110,8 @@ export const storyTabs = [
     label: "The Atmosphere",
     body: "A romantic table. A business lunch. A family gathered for the afternoon. The room is fine dining with more than one manner: quiet when the evening is yours, composed when the meeting matters, and generous when the table is full.",
     photos: [
-      { src: "/atmosphere/corner.jpg", alt: "The dining room" },
-      { src: "/atmosphere/hero-4.jpg?v=2", alt: "The room in the evening" },
+      { src: "/atmosphere/terrace-tables.jpg", alt: "The terrace and Table Mountain" },
+      { src: "/atmosphere/lantern-room.jpg", alt: "The dining room in the evening" },
     ],
   },
 ];
@@ -119,18 +119,21 @@ export const storyTabs = [
 export const aboutNotes = [
   {
     index: "I",
-    title: "The word",
-    text: "There is a Portuguese word for the bay. Baía, said Ba-hia. In 2001 Luis Viana and Daryl Mendelsohn used it, not to describe a view, but to name a standard and legacy the house would have to live up to. Every year since has been an attempt to deserve the word.",
+    title: "THE BAY. THE MOUNTAIN. THE EXPERIENCE.",
+    paragraphs: [
+      "Baia — meaning “The Bay” in Portuguese — is beautifully situated in the heart of the V&A Waterfront, overlooking the magnificent Table Bay. With breathtaking views of Table Mountain, the working harbour, and the ever-moving rhythm of Cape Town’s waterfront, Baia offers an atmosphere in which to relax, indulge, and savour the moment.",
+      "Settle onto our terrace with a glass of bubbles, wine, or a refreshing mocktail, take in the spectacular surroundings, and explore a menu created to delight every palate.",
+      "From our signature seafood to carefully prepared fish, meat, and poultry, there is something for every guest to discover.",
+    ],
   },
   {
     index: "II",
-    title: "The reputation",
-    text: "The name travelled first. It spread as a landmark for fine cuisine and wine: the finest seafood of southern Africa, poultry, beef, and venison, and a cellar of rare Cape vintages. Patrick Cumaio has cooked it from the beginning, from the finest ingredients, drawing on continental cuisine and Portuguese colonial tradition.",
-  },
-  {
-    index: "III",
-    title: "The rebuilding",
-    text: "The walls came last. A new house was raised so a promise already decades old would have rooms equal to it, the harbour and the water still in view. Brian came to give the cooking a new touch. The building is new, but the reason guests came for is not.",
+    title: "A NEW CHAPTER ... AUTHENTIC JAPANESE SUSHI",
+    paragraphs: [
+      "Our newest culinary addition introduces the refined traditions of Japanese-style sushi to the Baia experience.",
+      "Curated and crafted by Chef Daisuke, a fifth-generation Japanese sushi chef, together with his talented team, Chef Chunsheng and Chef Wu, our sushi offering brings generations of tradition, precision, and craftsmanship to the table.",
+      "It is a style of sushi that deserves to be experienced.",
+    ],
   },
 ];
 
@@ -138,19 +141,19 @@ export const chefs = [
   {
     role: "Original chef",
     name: "Patrick Cumaio",
-    text: "Baía’s original chef, from Mozambique, continues to bring his passion, flair, and deep connection to seafood to every plate. His culinary artistry has helped establish the reputation for which the house is known.",
+    text: "Mozambique still seasons the kitchen he opened. The fish is chosen the way he has always chosen it, and a plate leaves his hands only when it is ready.",
     image: "/chefs/patrick.jpg",
   },
   {
     role: "Creator",
     name: "Brian van Zijl",
-    text: "Creator, perfectionist, and artist, he transforms each dish into an experience. His attention to detail, visual artistry, and pursuit of flavour create dishes that are as captivating to look at as they are memorable to taste.",
-    image: "/chefs/brian.jpg",
+    text: "He builds the plate once the cooking is done. Line, colour, and flavour are settled together, and nothing is sent until that balance holds.",
+    image: "/chefs/brian.png",
   },
   {
     role: "Sushi",
     name: "Sushi Chefs",
-    text: "Three chefs at one bar, the house's new chapter. Rolls, nigiri and sashimi, held to the same finish as the rest of the kitchen.",
+    text: "Daisuke, Chunsheng, and Wu work one bar. The sushi is the house’s new chapter, finished with the same care as the rest of the menu.",
     image: "/chefs/sushi-chefs.jpg",
   },
 ];
