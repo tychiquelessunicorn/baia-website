@@ -75,7 +75,7 @@ export function AboutStory() {
       </div>
       <div className="about-prose">
         <p>Since its inception in 2001, Baia Seafood Restaurant has evolved into a world-class fine dining destination, celebrated for exceptional seafood, innovative flavours, and a distinctive fusion of culinary influences.</p>
-        <p>At the heart of Baia’s enduring story are two remarkable chefs. Chef Patrick Cumaio, Baia’s original chef, hailing from Mozambique, continues to bring his passion, flair, and deep connection to seafood to every plate. His culinary artistry has helped establish the reputation for which Baia is renowned both locally and internationally.</p>
+        <p>At the heart of Baia’s enduring story are two remarkable chefs. Patrick Cumaio, Baia’s original chef, hailing from Mozambique, bringing his passion, flair, and deep connection to seafood in every plate, building a reputation for which Baia is renowned both locally and internationally.</p>
         <p>Alongside him, Chef Brian van Zijl — creator, perfectionist, and artist — transforms each dish into an experience. His attention to detail, visual artistry, and pursuit of flavour create dishes that are as captivating to look at as they are memorable to taste.</p>
         <p>Together, Patrick and Brian form a team dedicated to culinary excellence, creativity, and perfection.</p>
       </div>
@@ -94,9 +94,11 @@ export function AboutStory() {
       </div>
       <div className="about-close">
         <h3>COME DINE WITH US</h3>
-        <p>Whether joining us for lunch or dinner, Baia is more than a meal — it is an experience, an adventure, and a celebration of exceptional food, remarkable views, and the art of hospitality.</p>
+        <div className="about-close-line">
+          <p>Whether joining us for lunch or dinner, Baia is more than a meal — it is an experience, an adventure, and a celebration of exceptional food, remarkable views, and the art of hospitality.</p>
+          <a className="btn-fill booking-cta" href={brand.booking} target="_blank" rel="noreferrer">Book A Seat</a>
+        </div>
         <p>Come and experience Baia.</p>
-        <a className="btn-fill booking-cta" href={brand.booking} target="_blank" rel="noreferrer">Book A Seat</a>
       </div>
     </section>
   );

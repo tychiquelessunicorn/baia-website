@@ -344,8 +344,12 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .about-close h3, .about-close p { opacity: 0; transform: translateY(18px); }
 .about-close .booking-cta { opacity: 0; }
 .about-close p { margin: 0; max-width: none; color: var(--sage); font-size: 18px; line-height: 1.75; }
-.about-close p + p { margin-top: 1em; }
-.about-close .booking-cta { margin-top: 28px; }
+.about-close-line {
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+}
+.about-close-line p { flex: 1; min-width: 0; }
+.about-close-line + p { margin-top: 1em; }
+.about-close .booking-cta { margin-top: 0; flex: none; }
 .about-spread { padding: 8px 8vw 0; }
 .about-spread article {
   display: grid; grid-template-columns: 148px minmax(0, 1fr);
@@ -378,7 +382,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .about-close.is-shown h3 { animation: aboutArrive 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .about-close.is-shown h3::after { animation: aboutRule 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.16s forwards; }
 .about-close.is-shown p { animation: aboutArrive 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; }
-.about-close.is-shown p + p { animation-delay: 0.34s; }
+.about-close.is-shown .about-close-line + p { animation-delay: 0.34s; }
 .about-close.is-shown .booking-cta { animation: aboutFade 0.8s ease 0.46s forwards; }
 @keyframes aboutLine {
   from { opacity: 0; transform: translateY(120%); }
@@ -996,6 +1000,8 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .chef-frame { height: 380px; }
   .chef-copy h3 { font-size: 36px; }
   .chef-copy > p:last-of-type { font-size: 15px; }
+  .about-close-line { flex-direction: column; align-items: stretch; gap: 22px; }
+  .about-close-line .booking-cta { align-self: flex-end; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -97,12 +97,12 @@ export function Chefs() {
         <div>
           <p className="kicker">The kitchen</p>
           <h2>
-            Multiple chefs,
+            Five chefs,
             <br />
             one pursuit.
           </h2>
         </div>
-        <p>Together, Patrick and Brian keep one standard: excellence, creativity, and a plate finished to the last detail. Three sushi chefs have joined them.</p>
+        <p>Together, Patrick and Brian keep one standard: excellence, creativity, and a plate finished to the last detail. Three sushi chefs have joined to perfect that standard.</p>
       </div>
       <div className={`chef-show${seen || !motion ? " is-live" : ""}`}>
         <div className="chef-stage">

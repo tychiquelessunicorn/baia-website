@@ -382,7 +382,7 @@ export function HomeView() {
           <div className="booking-copy">
             <p className="kicker">Reservations</p>
             <h2>Book a table</h2>
-            <p>Lunch or dinner, every day, with Table Mountain before you and the harbour below. Choose the hour. The table is held in your name.</p>
+            <p>Lunch or dinner, every day, with Table Mountain before you and the harbour below. Choose the hour.</p>
             <ul className="booking-facts">
               <li>Lunch 12:00–15:30</li>
               <li>Dinner 18:00–22:00</li>

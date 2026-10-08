@@ -63,25 +63,25 @@ export const heroSlides = [
   {
     title: "The",
     outline: "Occasion",
-    text: "Romance. Family. Business. A party. Or even a private function. Name the occasion. Baía is perfectly dressed for you.",
+    text: "Romance. Family. Business. A party. Or even a private function. Name the occasion. Baía is perfectly suited for you.",
     image: "/atmosphere/occasion.jpg",
   },
   {
     title: "The",
     outline: "View",
-    text: "Outside, Table Mountain and the harbour. Inside, an absolute luxury. Dine with the Table mountain facing you.",
+    text: "Outside, Table Mountain and the working harbour create a spectacular setting. Inside, refined luxury awaits with uninterrupted views.",
     image: "/atmosphere/hero-1.jpg?v=2",
   },
   {
     title: "The",
     outline: "Kitchen",
-    text: "We bring the sea to your plate and still offer the primest meat and poultry. And sushi, our new addition, is plated for you.",
+    text: "We bring the sea to your plate alongside prime cuts of meat and poultry. Our newest addition, sushi, is perfectly prepared and beautifully plated.",
     image: "/atmosphere/hero-2.jpg?v=2",
   },
   {
     title: "The",
     outline: "Cellar",
-    text: "Cape wine with a spine. Champagne. Bespoke cocktails we wrote. Or none. Choose. The glass is already yours.",
+    text: "The list is rooted in the Cape Winelands, with classic and bespoke cocktails, bubbles, and beautifully crafted mocktails to complement every dish.",
     image: "/atmosphere/hero-3.jpg?v=2",
   },
 ];
@@ -90,9 +90,9 @@ export const storyTabs = [
   {
     id: "food",
     label: "The Food",
-    body: "Seafood leads, and the menu refuses to stop there. Linefish and shellfish sit beside aged beef, Cape venison, and poultry, then a sushi bar worked in the Japanese style. Several traditions, one kitchen, and a plate that is rarely the one you expected.",
+    body: "Seafood leads, and the menu refuses to stop there. Linefish and shellfish sit beside aged beef, Venison, and poultry, then a sushi bar worked in the Japanese style. Several traditions, one kitchen, and a plate that is rarely the one you expected.",
     photos: [
-      { src: "/dishes/sushi-service.png", alt: "Sushi and sashimi" },
+      { src: "/dishes/terrace-sushi.jpg", alt: "Sushi on the terrace, with Table Mountain and the harbour" },
       { src: "/dishes/prawn-plate.jpg", alt: "Prawns with rice and chips" },
     ],
   },
@@ -121,9 +121,8 @@ export const aboutNotes = [
     index: "I",
     title: "THE BAY. THE MOUNTAIN. THE EXPERIENCE.",
     paragraphs: [
-      "Baia — meaning “The Bay” in Portuguese — is beautifully situated in the heart of the V&A Waterfront, overlooking the magnificent Table Bay. With breathtaking views of Table Mountain, the working harbour, and the ever-moving rhythm of Cape Town’s waterfront, Baia offers an atmosphere in which to relax, indulge, and savour the moment.",
-      "Settle onto our terrace with a glass of bubbles, wine, or a refreshing mocktail, take in the spectacular surroundings, and explore a menu created to delight every palate.",
-      "From our signature seafood to carefully prepared fish, meat, and poultry, there is something for every guest to discover.",
+      "Baia — meaning “The Bay” in Portuguese — is beautifully situated in the heart of the V&A Waterfront, with breathtaking views of Table Mountain, the working harbour, and the ever-moving rhythm of Cape Town. It offers the perfect atmosphere to relax, indulge, and savour the best of Cape Town’s coastal dining.",
+      "Settle onto our terrace with a glass of bubbles, wine, or a refreshing mocktail and explore a menu created to delight every palate. From our signature shellfish to carefully prepared fish, meat, and poultry, there is something for every guest to discover.",
     ],
   },
   {
@@ -141,19 +140,19 @@ export const chefs = [
   {
     role: "Original chef",
     name: "Patrick Cumaio",
-    text: "Mozambique still seasons the kitchen he opened. The fish is chosen the way he has always chosen it, and a plate leaves his hands only when it is ready.",
+    text: "From Mozambique, he opened this kitchen in 2001. The seafood, and the reputation that travelled with it, still start at his hands.",
     image: "/chefs/patrick.jpg",
   },
   {
     role: "Creator",
     name: "Brian van Zijl",
-    text: "He builds the plate once the cooking is done. Line, colour, and flavour are settled together, and nothing is sent until that balance holds.",
+    text: "Artist as much as chef. A dish leaves him only when the flavour and the look of the plate are equally finished.",
     image: "/chefs/brian.png",
   },
   {
     role: "Sushi",
     name: "Sushi Chefs",
-    text: "Daisuke, Chunsheng, and Wu work one bar. The sushi is the house’s new chapter, finished with the same care as the rest of the menu.",
+    text: "Daisuke, a fifth-generation sushi chef, leads the bar with Chunsheng and Wu. Japanese tradition, cut and served with quiet precision.",
     image: "/chefs/sushi-chefs.jpg",
   },
 ];
