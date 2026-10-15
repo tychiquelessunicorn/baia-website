@@ -527,12 +527,14 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   transform: translate(-50%, -50%); object-fit: contain;
 }
 .video-cinema.is-still .video-logo { position: static; width: min(280px, 52vw); transform: none; }
-.video-soon {
-  margin: 2px 0 0; font-size: 11px; font-weight: 400; letter-spacing: 0.34em;
-  text-transform: uppercase; color: var(--copper); opacity: 0;
+.video-soon { margin: 2px 0 0; opacity: 0; }
+.video-soon span {
+  display: inline-block; font-size: 11px; font-weight: 400; letter-spacing: 0.34em;
+  text-transform: uppercase; color: var(--copper); transform-origin: center;
+  animation: playZoom 3.2s ease-in-out infinite;
 }
-.video-block.rise.is-in .video-soon { animation: soonArrive 1.2s ease 1.25s both; }
-@keyframes soonArrive { from { opacity: 0; } to { opacity: 0.72; } }
+.video-block.rise:not(.is-in) .video-soon { opacity: 0; }
+.video-block.rise.is-in .video-soon { animation: playArrive 0.9s ease 0.95s both; }
 .video-stage::after {
   content: ""; position: absolute; left: 14%; right: 14%; top: 50%; z-index: 4; height: 1px;
   background: var(--copper); pointer-events: none; transform: scaleX(0); opacity: 0;
@@ -1018,7 +1020,8 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .video-stage::after { opacity: 0; }
   .video-drift video { transform: none; }
   .play-btn { opacity: 1; }
-  .video-soon { opacity: 0.72; animation: none; }
+  .video-soon, .video-soon span { animation: none; transform: none; }
+  .video-soon { opacity: 1; }
   .play-btn.is-hidden { opacity: 0; }
   .story-body p, .hero-copy p, .about-spread article, .about .kicker, .about-prose, .about-prose p, .about-close, .about-close h3, .about-close p, .about-close .booking-cta, .about-mark { opacity: 1; transform: none; }
   .about-line > span, .about-copy { opacity: 1; transform: none; }

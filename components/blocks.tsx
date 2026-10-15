@@ -81,7 +81,7 @@ export function VideoBlock({ word = "Restaurant" }: { word?: string }) {
           <div className="play-btn" aria-hidden="true">
             <PlayMark />
           </div>
-          <p className="video-soon">Coming soon</p>
+          <p className="video-soon"><span>Coming soon</span></p>
         </div>
       </div>
     </section>
