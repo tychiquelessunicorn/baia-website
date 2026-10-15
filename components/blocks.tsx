@@ -76,11 +76,12 @@ export function VideoBlock({ word = "Restaurant" }: { word?: string }) {
     <section className="video-block">
       <h2 className="video-word">{word}</h2>
       <div className="video-stage">
-        <div className="video-cinema is-still" aria-hidden="true">
+        <div className="video-cinema is-still">
           <img className="video-logo" src="/brand/baia-logo.png?v=4" alt="" />
-          <div className="play-btn">
+          <div className="play-btn" aria-hidden="true">
             <PlayMark />
           </div>
+          <p className="video-soon">Coming soon</p>
         </div>
       </div>
     </section>

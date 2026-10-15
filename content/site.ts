@@ -63,7 +63,7 @@ export const heroSlides = [
   {
     title: "The",
     outline: "Occasion",
-    text: "Romance. Family. Business. A party. Or even a private function. Name the occasion. Baía is perfectly suited for you.",
+    text: "A romantic dinner, a business lunch, or a family gathering. Baia offers fine dining for every occasion: intimate when the evening is yours, composed when business calls, and welcoming when the table is full.",
     image: "/atmosphere/occasion.jpg",
   },
   {
@@ -75,13 +75,13 @@ export const heroSlides = [
   {
     title: "The",
     outline: "Kitchen",
-    text: "We bring the sea to your plate alongside prime cuts of meat and poultry. Our newest addition, sushi, is perfectly prepared and beautifully plated.",
+    text: "At Baia, the ocean and land meet. Whether you prefer prime cuts of beef, tender poultry, fresh seafood, or our latest addition, sushi, every dish promises an exceptional dining experience.",
     image: "/atmosphere/hero-2.jpg?v=2",
   },
   {
     title: "The",
     outline: "Cellar",
-    text: "The list is rooted in the Cape Winelands, with classic and bespoke cocktails, bubbles, and beautifully crafted mocktails to complement every dish.",
+    text: "Inspired by the Cape Winelands and featuring classic and bespoke cocktails, bubbles, and beautifully crafted mocktails to complement every dish.",
     image: "/atmosphere/hero-3.jpg?v=2",
   },
 ];
@@ -90,7 +90,7 @@ export const storyTabs = [
   {
     id: "food",
     label: "The Food",
-    body: "Seafood leads, and the menu refuses to stop there. Linefish and shellfish sit beside aged beef, Venison, and poultry, then a sushi bar worked in the Japanese style. Several traditions, one kitchen, and a plate that is rarely the one you expected.",
+    body: "Seafood takes the lead, but the menu goes far beyond it. Linefish and shellfish share the spotlight with aged beef, venison, and poultry, while a Japanese-inspired sushi bar adds another dimension. Distinct culinary traditions, one kitchen, and an experience that brings something exceptional to every plate.",
     photos: [
       { src: "/dishes/terrace-sushi.jpg", alt: "Sushi on the terrace, with Table Mountain and the harbour" },
       { src: "/dishes/prawn-plate.jpg", alt: "Prawns with rice and chips" },
@@ -99,7 +99,7 @@ export const storyTabs = [
   {
     id: "bar",
     label: "The Bar",
-    body: "The list is rooted in the Cape winelands: estates poured to sit beside the food. The cocktails travel further. International classics, and house drinks written only for this room, with bubbles or a mocktail when that is the glass you want.",
+    body: "Rooted in the Cape Winelands, our wine selection showcases celebrated estates and vintages chosen to complement every dish. Our cocktails take a worldly approach, blending international classics with bespoke creations crafted exclusively for Baia. From bubbles to thoughtfully crafted mocktails, every glass has its place at the table.",
     photos: [
       { src: "/atmosphere/dining-floor.jpg", alt: "The dining room" },
       { src: "/atmosphere/hero-3.jpg?v=2", alt: "The wine wall" },
@@ -145,8 +145,8 @@ export const chefs = [
   },
   {
     role: "Creator",
-    name: "Brian van Zijl",
-    text: "Artist as much as chef. A dish leaves him only when the flavour and the look of the plate are equally finished.",
+    name: "Brian Van Zijl",
+    text: "An artist as much as a chef. Each dish leaves his hands only when flavour and presentation achieve perfect harmony.",
     image: "/chefs/brian.png",
   },
   {

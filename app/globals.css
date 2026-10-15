@@ -518,11 +518,21 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   position: relative; width: 100%; height: min(78vh, 820px);
 }
 .video-cinema { position: absolute; inset: 0; overflow: hidden; cursor: pointer; }
-.video-cinema.is-still { cursor: default; pointer-events: none; background: var(--green); }
+.video-cinema.is-still {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+  cursor: default; pointer-events: none; background: var(--green);
+}
 .video-logo {
   position: absolute; left: 50%; top: 46%; width: min(320px, 54vw); height: auto;
   transform: translate(-50%, -50%); object-fit: contain;
 }
+.video-cinema.is-still .video-logo { position: static; width: min(280px, 52vw); transform: none; }
+.video-soon {
+  margin: 2px 0 0; font-size: 11px; font-weight: 400; letter-spacing: 0.34em;
+  text-transform: uppercase; color: var(--copper); opacity: 0;
+}
+.video-block.rise.is-in .video-soon { animation: soonArrive 1.2s ease 1.25s both; }
+@keyframes soonArrive { from { opacity: 0; } to { opacity: 0.72; } }
 .video-stage::after {
   content: ""; position: absolute; left: 14%; right: 14%; top: 50%; z-index: 4; height: 1px;
   background: var(--copper); pointer-events: none; transform: scaleX(0); opacity: 0;
@@ -570,12 +580,10 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   width: 120px; height: 120px; color: #f6f1e8;
 }
 .video-cinema.is-still .play-btn {
+  position: static;
   color: var(--copper);
-  inset: auto;
-  left: 0; right: 0;
-  top: calc(46% + 78px);
   width: 72px; height: 72px;
-  margin: 0 auto;
+  margin: 0;
 }
 .video-cinema.is-still .play-triangle { animation: none; }
 .video-cinema.is-still .play-mark svg {
@@ -1010,6 +1018,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .video-stage::after { opacity: 0; }
   .video-drift video { transform: none; }
   .play-btn { opacity: 1; }
+  .video-soon { opacity: 0.72; animation: none; }
   .play-btn.is-hidden { opacity: 0; }
   .story-body p, .hero-copy p, .about-spread article, .about .kicker, .about-prose, .about-prose p, .about-close, .about-close h3, .about-close p, .about-close .booking-cta, .about-mark { opacity: 1; transform: none; }
   .about-line > span, .about-copy { opacity: 1; transform: none; }
