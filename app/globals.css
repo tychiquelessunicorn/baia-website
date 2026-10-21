@@ -808,6 +808,17 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .menu-modal-close:hover { background: var(--copper); color: var(--deep); }
 .menu-modal-body { overflow: auto; padding: 8px 32px 28px; }
 .menu-modal-body .menu-list { margin-top: 8px; }
+.menu-modal-body .menu-list .menu-group {
+  position: sticky; top: -8px; z-index: 1;
+  margin: 44px 0 4px; padding: 18px 0 12px;
+  background: var(--black-2);
+  border-bottom: 2px solid var(--copper);
+  font-size: clamp(18px, 1.8vw, 22px); font-weight: 500;
+  letter-spacing: 0.16em;
+}
+.menu-modal-body .menu-list .menu-group:first-child { margin-top: 0; }
+.menu-modal-body .menu-list .menu-group + article,
+.menu-modal-body .menu-list .menu-group + article + article { border-top: 0; }
 @keyframes menuVeil { from { opacity: 0; } to { opacity: 1; } }
 @keyframes menuCard { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; padding: 28px 8vw 64px; }
@@ -973,6 +984,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .menu-explore { padding: 28px 24px 48px; }
   .menu-chapters button { min-height: 52px; padding: 12px 6px; font-size: 16px; }
   .menu-list, .menu-reel, .menu-modal-body .menu-list { grid-template-columns: 1fr; }
+  .menu-modal-body .menu-list .menu-group + article + article { border-top: 1px solid var(--line); }
   .menu-modal-head, .menu-modal-body { padding-left: 20px; padding-right: 20px; }
   .menu-modal { padding: 16px; }
   .menu-reel { --row: 140px; }
