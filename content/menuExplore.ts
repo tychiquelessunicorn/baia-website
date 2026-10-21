@@ -117,6 +117,14 @@ const sushi: ExploreItem[] = [
   { group: "California rolls", name: "Alaskan King Crab And Avocado", description: "Eight inside-out pieces. Alaskan king crab, avocado, cucumber, Japanese mayonnaise, caviar and sesame." },
 ];
 
+// Cellar groups shown in full, even where a line carries no tasting note.
+const listedInFull = new Set([
+  "Cocktails",
+  "Non-alcoholic cocktails",
+  "Wine by the glass",
+  "The exclusive collection",
+]);
+
 export const menuChapters: MenuChapter[] = [
   {
     id: "seafood",
@@ -139,14 +147,10 @@ export const menuChapters: MenuChapter[] = [
   {
     id: "cellar",
     label: "The Cellar",
-    intro: "Cape wines with a tasting note, from méthode to the estates.",
+    intro: "Cocktails, wine by the glass, and Cape wines from méthode to the exclusive collection.",
     items: cellarItems.filter(
       (item) =>
-        item.group === "The exclusive collection" ||
-        (item.group !== "Cocktails" &&
-          item.group !== "Without alcohol" &&
-          item.group !== "By the glass" &&
-          item.description.trim().length > 80),
+        listedInFull.has(item.group) || item.description.trim().length > 80,
     ),
   },
   {
