@@ -142,10 +142,11 @@ export const menuChapters: MenuChapter[] = [
     intro: "Cape wines with a tasting note, from méthode to the estates.",
     items: cellarItems.filter(
       (item) =>
-        item.group !== "Cocktails" &&
-        item.group !== "Without alcohol" &&
-        item.group !== "By the glass" &&
-        item.description.trim().length > 80,
+        item.group === "The exclusive collection" ||
+        (item.group !== "Cocktails" &&
+          item.group !== "Without alcohol" &&
+          item.group !== "By the glass" &&
+          item.description.trim().length > 80),
     ),
   },
   {
