@@ -108,7 +108,7 @@ export const storyTabs = [
   {
     id: "atmosphere",
     label: "The Atmosphere",
-    body: "A romantic table. A business lunch. A family gathered for the afternoon. The room is fine dining with more than one manner: quiet when the evening is yours, composed when the meeting matters, and generous when the table is full.",
+    body: "A romantic table. A business lunch. A family gathering. The room is fine dining with more than one manner: quiet when the evening is yours, composed when the meeting matters, and generous when the table is full.",
     photos: [
       { src: "/atmosphere/terrace-tables.jpg", alt: "The terrace and Table Mountain" },
       { src: "/atmosphere/lantern-room.jpg", alt: "The dining room in the evening" },
