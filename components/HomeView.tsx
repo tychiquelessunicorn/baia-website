@@ -16,12 +16,13 @@ import { DishMarquee, Reveal, VideoBlock } from "./blocks";
 import { Chefs } from "./Chefs";
 import { MenuExplore } from "./MenuExplore";
 import { Diamond, Floral } from "./icons";
+import { SlideNav, useSwipe } from "./SlideNav";
 
 const TYPE_LETTER = 150;
 const TYPE_GAP = 440;
 const TYPE_START = 200;
-const HERO_HOLD = 9520;
-const STORY_HOLD = 7280;
+const HERO_HOLD = 6664;
+const STORY_HOLD = 5096;
 
 function HeroTitle({ title, outline }: { title: string; outline: string }) {
   const outlineRef = useRef<HTMLSpanElement>(null);
@@ -174,6 +175,16 @@ export function HomeView() {
     }, ms);
   };
 
+  const goHero = (index: number) => {
+    const target = (index + heroSlides.length) % heroSlides.length;
+    if (target === slideRef.current) return;
+    setLeaving(slideRef.current);
+    slideRef.current = target;
+    setFading(true);
+    setSlide(target);
+  };
+  const heroSwipe = useSwipe(() => goHero(slideRef.current - 1), () => goHero(slideRef.current + 1));
+
   useEffect(() => {
     if (pausedRef.current) {
       remainingRef.current = HERO_HOLD;
@@ -222,6 +233,9 @@ export function HomeView() {
     }
     if (restart) setStoryEpoch((n) => n + 1);
   };
+
+  const stepStory = (dir: number) => queueStory((tabRef.current + dir + storyTabs.length) % storyTabs.length, true);
+  const storySwipe = useSwipe(() => stepStory(-1), () => stepStory(1));
 
   useEffect(() => {
     if (!storyReady.current) {
@@ -292,7 +306,7 @@ export function HomeView() {
   return (
     <>
       <section className="hero">
-        <div className="hero-photo">
+        <div className="hero-photo" {...heroSwipe}>
           <div className="hero-depth">
           {heroSlides.map((item, index) => (
             <div
@@ -307,6 +321,14 @@ export function HomeView() {
             />
           ))}
           </div>
+          <SlideNav
+            className="is-overlay"
+            index={slide}
+            total={heroSlides.length}
+            label="Slide"
+            onPrev={() => goHero(slideRef.current - 1)}
+            onNext={() => goHero(slideRef.current + 1)}
+          />
         </div>
         <div className="hero-copy">
           <HeroTitle key={current.outline} title={current.title} outline={current.outline} />
@@ -365,13 +387,7 @@ export function HomeView() {
               type="button"
               className={index === slide ? "is-on" : ""}
               aria-label={`Slide ${index + 1}`}
-              onClick={() => {
-                if (index === slideRef.current) return;
-                setLeaving(slideRef.current);
-                slideRef.current = index;
-                setFading(true);
-                setSlide(index);
-              }}
+              onClick={() => goHero(index)}
             />
           ))}
         </div>
@@ -398,7 +414,7 @@ export function HomeView() {
           <Floral />
         </div>
         <Reveal className="story-grid">
-          <div className="story-photo">
+          <div className="story-photo" {...storySwipe}>
             {storyTabs.map((item, index) => (
               <img
                 key={item.id}
@@ -430,9 +446,16 @@ export function HomeView() {
                 {storyTabs[copyIndex].body}
               </p>
             </div>
+            <SlideNav
+              index={storyTabs.findIndex((item) => item.id === tab)}
+              total={storyTabs.length}
+              label="Story"
+              onPrev={() => stepStory(-1)}
+              onNext={() => stepStory(1)}
+            />
             <a className="btn-line" href={brand.booking} target="_blank" rel="noreferrer">◇ Find A Table ◇</a>
           </div>
-          <div className="story-photo">
+          <div className="story-photo" {...storySwipe}>
             {storyTabs.map((item, index) => (
               <img
                 key={item.id}

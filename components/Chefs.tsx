@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { chefs } from "@/content/site";
+import { SlideNav, useSwipe } from "./SlideNav";
 
-const HOLD = 8680;
+const HOLD = 6076;
 const PASS = 1050;
 const TYPE_START = 520;
 const TYPE_LETTER = 88;
@@ -50,6 +51,9 @@ export function Chefs() {
     setIndex(next);
     setEpoch((n) => n + 1);
   };
+
+  const step = (dir: number) => show((indexRef.current + dir + chefs.length) % chefs.length);
+  const swipe = useSwipe(() => step(-1), () => step(1));
 
   const startChefTimer = (ms: number) => {
     window.clearTimeout(timerRef.current);
@@ -105,10 +109,18 @@ export function Chefs() {
         <p>Together, Patrick and Brian keep one standard: excellence, creativity, and a plate finished to the last detail. Three sushi chefs have joined to perfect that standard.</p>
       </div>
       <div className={`chef-show${seen || !motion ? " is-live" : ""}`}>
-        <div className="chef-stage">
+        <div className="chef-stage" {...swipe}>
           {leaving !== null && <ChefPane chef={chefs[leaving]} mode="out" typing={false} />}
           <ChefPane key={epoch} chef={chefs[index]} mode="in" typing={seen && motion} />
         </div>
+        <SlideNav
+          className="is-overlay chef-nav"
+          index={index}
+          total={chefs.length}
+          label="Chef"
+          onPrev={() => step(-1)}
+          onNext={() => step(1)}
+        />
         <div
           className="chef-dots"
           role="tablist"
