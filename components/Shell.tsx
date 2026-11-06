@@ -32,6 +32,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
     return () => window.clearTimeout(timer);
   }, [pathname]);
 
+  // Close the mobile menu as soon as a link in it is tapped. The body scroll lock is
+  // released right away so the page can scroll to the section the link points at.
+  const closeMobile = () => {
+    document.body.style.overflow = "";
+    setMobile(false);
+  };
+
   useEffect(() => {
     document.body.style.overflow = open || mobile ? "hidden" : "";
     return () => {
@@ -151,7 +158,12 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </header>
 
       {mobile && (
-        <div className="mobile-nav">
+        <div
+          className="mobile-nav"
+          onClick={(event) => {
+            if ((event.target as HTMLElement).closest("a")) closeMobile();
+          }}
+        >
           <button type="button" className="sheet-close" onClick={() => setMobile(false)}>Close</button>
           <Link href="/">Home</Link>
           <Link href="/#explore">Menus</Link>

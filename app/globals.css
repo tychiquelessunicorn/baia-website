@@ -994,7 +994,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   .hours-row { flex-direction: column; align-items: flex-start; padding: 24px 0 8px; }
   .hours-row h3 { font-size: 30px; }
 
-  .instagram { display: grid; grid-template-columns: 1fr 1fr; justify-items: center; padding: 36px 24px 0; }
+  .instagram { display: grid; grid-template-columns: 1fr 1fr; justify-items: center; row-gap: 32px; padding: 36px 24px 0; }
   .ig-badge, .ig-badge.is-facebook { position: relative; left: auto; right: auto; top: auto; transform: none; width: min(148px, 42vw); height: min(148px, 42vw); margin: 0; font-size: clamp(16px, 5vw, 22px); }
   .ig-grid { grid-column: 1 / -1; margin: 0; grid-template-columns: 1fr 1fr; }
   .ig-grid img { height: 180px; }
