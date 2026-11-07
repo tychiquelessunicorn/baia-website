@@ -4,13 +4,14 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { chefs } from "@/content/site";
 import { SlideNav, useSwipe } from "./SlideNav";
 
-const HOLD = 6076;
+const HOLD = 6987;
 const PASS = 1050;
 const TYPE_START = 520;
 const TYPE_LETTER = 88;
 const TYPE_SPACE = 160;
 
 export function Chefs() {
+  const hold = HOLD;
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState<number | null>(null);
   const [epoch, setEpoch] = useState(0);
@@ -67,13 +68,13 @@ export function Chefs() {
   useEffect(() => {
     if (!motion || !seen) return;
     const passTimer = window.setTimeout(() => setLeaving(null), PASS);
-    if (pausedRef.current) remainingRef.current = HOLD;
-    else startChefTimer(HOLD);
+    if (pausedRef.current) remainingRef.current = hold;
+    else startChefTimer(hold);
     return () => {
       window.clearTimeout(passTimer);
       window.clearTimeout(timerRef.current);
     };
-  }, [epoch, motion, seen]);
+  }, [epoch, motion, seen, hold]);
 
   const pauseChefs = (event: PointerEvent<HTMLDivElement>) => {
     if (pausedRef.current) return;
@@ -96,7 +97,7 @@ export function Chefs() {
   };
 
   return (
-    <section className="chefs" id="chefs" aria-label="The chefs" ref={sectionRef}>
+    <section className="chefs" id="chefs" aria-label="The chefs" ref={sectionRef} style={{ ["--chef-hold" as string]: `${hold}ms` }}>
       <div className="chefs-head">
         <div>
           <p className="kicker">The kitchen</p>

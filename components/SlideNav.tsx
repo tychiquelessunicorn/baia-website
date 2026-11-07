@@ -2,11 +2,9 @@
 
 import { useRef, type TouchEvent } from "react";
 
-const pad = (n: number) => String(n).padStart(2, "0");
-
 /**
  * Previous / next control for the slideshows on small screens: two round copper
- * buttons with a "01 / 05" counter between them. Hidden on desktop, where the
+ * buttons with a "1 of 5" counter between them. Hidden on desktop, where the
  * existing dots and tabs remain.
  */
 export function SlideNav({
@@ -30,9 +28,9 @@ export function SlideNav({
         <Chevron dir="left" />
       </button>
       <span className="slide-nav-count" aria-live="polite">
-        <b>{pad(index + 1)}</b>
-        <i aria-hidden="true" />
-        <span>{pad(total)}</span>
+        <b>{index + 1}</b>
+        <span>of</span>
+        <b>{total}</b>
       </span>
       <button type="button" className="slide-nav-btn" aria-label={`Next ${label.toLowerCase()}`} onClick={onNext}>
         <Chevron dir="right" />

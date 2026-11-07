@@ -290,7 +290,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
 .story-copy .tabs button.is-on::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 1px;
   background: var(--copper); transform: scaleX(0); transform-origin: left center;
-  animation: storyMeter var(--story-hold, 5.096s) linear both;
+  animation: storyMeter var(--story-hold, 5.86s) linear both;
 }
 .story.is-paused .story-copy .tabs button.is-on::after { animation-play-state: paused; }
 @keyframes storyMeter { to { transform: scaleX(1); } }
@@ -434,7 +434,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   animation: chefGrow 1.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .chef-show.is-live .chef-layer.is-in .chef-frame img {
-  animation: chefSettle 6.076s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: chefSettle var(--chef-hold, 6.987s) cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .chef-layer.is-out .chef-frame { animation: chefRelease 1.45s ease forwards; }
 .chef-layer.is-out .chef-frame img { animation: none; }
@@ -462,7 +462,7 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   position: absolute; inset: 0; background: var(--copper);
   transform: scaleX(0); transform-origin: left center;
 }
-.chef-show.is-live .chef-layer.is-in .chef-line span { animation: chefLine 6.076s linear both; }
+.chef-show.is-live .chef-layer.is-in .chef-line span { animation: chefLine var(--chef-hold, 6.987s) linear both; }
 @keyframes chefLine { to { transform: scaleX(1); } }
 .chef-copy > p:last-of-type { margin: 18px 0 0; max-width: 42ch; color: var(--sage); font-size: 16px; line-height: 1.7; }
 .chef-show.is-live .chef-layer.is-in .chef-copy .kicker,
@@ -1042,10 +1042,9 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   }
   .slide-nav-btn:active { background: var(--copper); color: #fbf8f2; transform: scale(0.94); }
   .slide-nav-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-  .slide-nav-count { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
+  .slide-nav-count { display: inline-flex; align-items: baseline; gap: 6px; min-width: 64px; justify-content: center; font-size: 16px; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
   .slide-nav-count b { font-weight: 500; }
-  .slide-nav-count i { width: 18px; height: 1px; background: var(--copper); }
-  .slide-nav-count span { color: var(--copper); }
+  .slide-nav-count span { color: var(--copper); font-style: italic; font-size: 14px; }
 
   /* Frosted pill when it sits on a photo */
   .slide-nav.is-overlay {
@@ -1056,13 +1055,17 @@ html.is-pointer .cursor-outer { width: 56px; height: 56px; background: rgba(176,
   }
   .slide-nav.is-overlay .slide-nav-btn { width: 40px; height: 40px; border-color: rgba(176, 138, 88, 0.55); }
 
-  .story-copy .slide-nav { margin: 4px auto 22px; }
 
   /* Chef control sits on the bottom edge of the portrait frame */
   .slide-nav.chef-nav { top: calc(8px + min(460px, 62vw) - 64px); bottom: auto; right: auto; left: calc(24px + min(100% - 48px, 480px) - 14px); transform: translateX(-100%); }
 
   /* The arrows replace the small side dots on mobile */
   .hero-dots, .chef-dots { display: none; }
+
+  /* Come Dine With Us: keep the text together and put "Book A Seat" after the last line */
+  .about-close { display: flex; flex-direction: column; }
+  .about-close-line { display: contents; }
+  .about-close-line .booking-cta { order: 1; align-self: flex-end; margin-top: 28px; }
 }
 @media (max-width: 640px) {
   .slide-nav.chef-nav { top: calc(8px + 380px - 64px); }
